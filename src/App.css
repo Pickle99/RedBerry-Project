@@ -2,3 +2,57 @@
   margin: 0 auto;
   padding: 0 auto;
 }
+
+body {
+  background-color: rgba(0, 0, 0, 0.89);
+  background-image: url('./images/stars.png');
+}
+
+.container {
+  white-space: nowrap;
+}
+
+.container h1 {
+  font-family: 'Rowdies';
+  font-size: 96px;
+  color: #fe3b1f;
+  padding: 0px;
+}
+.box-2 p {
+  background-color: #fe3b1f;
+  border-radius: 50px;
+  padding: 24px 58px;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+.container p:hover {
+  cursor: pointer;
+}
+.container-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.box-1 {
+  padding: 200px 0 0 0;
+}
+.box-2 {
+  padding: 180px 0 0 0;
+}
+
+.box-3 p {
+  padding-top: 40px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #ffffff;
+}
