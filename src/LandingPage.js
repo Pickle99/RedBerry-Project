@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
-
+import { useNavigate } from 'react-router-dom';
 const LandingPage = () => {
   const rocketman = require('./images/rocketman.png');
+  const navigate = useNavigate();
+
+  const startSurvey = () => {
+    navigate('/survey');
+  };
+
   return (
     <div className='container'>
       <div className='container-box'>
@@ -10,10 +16,12 @@ const LandingPage = () => {
           <h1>Welcome Rocketeer !</h1>
         </div>
         <div className='box-2'>
-          <p>Start Questionnaire</p>
+          <p onClick={startSurvey}>Start Questionnaire</p>
         </div>
         <div className='box-3'>
-          <p> Submitted Applications</p>
+          <span>
+            <p>Submitted applications</p>
+          </span>
         </div>
         <img src={rocketman} alt='img' />
       </div>

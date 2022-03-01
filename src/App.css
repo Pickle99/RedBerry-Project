@@ -3,7 +3,7 @@
   padding: 0 auto;
 }
 
-body {
+.container {
   background-color: rgba(0, 0, 0, 0.89);
   background-image: url('./images/stars.png');
 }
@@ -30,6 +30,7 @@ body {
 .container p:hover {
   cursor: pointer;
 }
+
 .container-box {
   display: flex;
   justify-content: center;
@@ -43,7 +44,7 @@ body {
   padding: 180px 0 0 0;
 }
 
-.box-3 p {
+.box-3 span {
   padding-top: 40px;
   font-family: 'Montserrat';
   font-style: normal;
@@ -55,4 +56,48 @@ body {
   text-align: center;
   text-decoration-line: underline;
   color: #ffffff;
+}
+
+/*  FOR Questions Page down here */
+
+.qp-container {
+  min-height: 100vh;
+  display: flex;
+}
+
+.qp-left {
+  width: 50vw;
+  background-color: white;
+}
+
+.qp-right {
+  width: 50vw;
+  background-color: black;
+}
+
+.qp-right-header {
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 79px;
+  color: #fe3b1f;
+}
+
+.qp-right-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 200%;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.qp-right-box {
+  padding: 250px 60px 0 200px;
+}
+
+.qp-box-2 {
+  padding-top: 100px;
 }
