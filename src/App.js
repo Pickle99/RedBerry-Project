@@ -26,7 +26,6 @@ function App() {
       <div>
         <Routes>
           <Route path='/' element={<LandingPage />} />
-
           <Route path='survey' element={<QuestionsPage />} />
         </Routes>
       </div>

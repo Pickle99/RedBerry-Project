@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 * {
   margin: 0 auto;
   padding: 0 auto;
@@ -141,13 +143,15 @@
 }
 
 .qp-input input {
-  padding: 20px 250px 20px 55px;
+  padding: 20px 0px 20px 40px;
   font-family: 'Montserrat';
   font-style: italic;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   color: #454545;
+  box-sizing: border-box;
+  width: 500px;
 }
 
 .qp-button-box {
@@ -160,4 +164,40 @@
 }
 .button-prev {
   padding: 10px;
+}
+
+.select-container {
+  padding: 20px;
+  border: 1px solid #525557;
+  position: relative;
+  border-radius: 3px;
+  background: #fff;
+  width: 460px;
+}
+.select-container select {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font-size: 16px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #454545;
+}
+.select-container:after {
+  content: 'keyboard_arrow_down';
+  font-family: 'material icons';
+  font-size: 24px;
+  color: #fe3b1f;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
