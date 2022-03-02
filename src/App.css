@@ -97,7 +97,7 @@
 }
 
 .qp-right-box {
-  padding: 110px 60px 0 200px;
+  padding: 110px 40px 0 150px;
 }
 
 .qp-box-2 {
@@ -152,4 +152,12 @@
 
 .qp-button-box {
   display: flex;
+  justify-content: center;
+}
+
+.button-next {
+  padding: 10px;
+}
+.button-prev {
+  padding: 10px;
 }
