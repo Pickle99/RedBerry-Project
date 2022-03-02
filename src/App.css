@@ -60,6 +60,8 @@
 
 /*  FOR Questions Page down here */
 
+/* For RIGHT page 1 */
+
 .qp-container {
   min-height: 100vh;
   display: flex;
@@ -72,7 +74,7 @@
 
 .qp-right {
   width: 50vw;
-  background-color: black;
+  background-color: rgb(0, 0, 0, 0.89);
 }
 
 .qp-right-header {
@@ -95,9 +97,55 @@
 }
 
 .qp-right-box {
-  padding: 250px 60px 0 200px;
+  padding: 110px 60px 0 200px;
 }
 
 .qp-box-2 {
+  padding-top: 150px;
+}
+
+/* for LEFT Page 1 */
+
+.qp-left-header {
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 79px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fe3b1f;
+}
+
+.qp-left-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.qp-left-header-box {
+  display: flex;
+  padding: 110px 100px 0;
+}
+
+.qp-input-container {
+  display: flex;
+  flex-direction: column;
   padding-top: 100px;
+}
+
+.qp-input {
+  padding: 20px;
+}
+
+.qp-input input {
+  padding: 20px 250px 20px 55px;
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #454545;
 }

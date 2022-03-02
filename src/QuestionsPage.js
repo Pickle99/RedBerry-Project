@@ -3,7 +3,30 @@ import './App.css';
 const QuestionsPage = () => {
   return (
     <div className='qp-container'>
-      <div className='qp-left'>a</div>
+      <div className='qp-left'>
+        <div className='qp-left-box'>
+          <div className='qp-left-header-box'>
+            <p className='qp-left-header'>
+              Hey, Rocketeer, what are your coordinates?
+            </p>
+          </div>
+          <div className='qp-input-container'>
+            <div className='qp-input'>
+              <input placeholder='First Name' />
+            </div>
+            <div className='qp-input'>
+              <input placeholder='Last Name' />
+            </div>
+            <div className='qp-input'>
+              <input placeholder='E Mail' />
+            </div>
+            <div className='qp-input'>
+              <input placeholder='+995 5__ __ __ __' />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className='qp-right'>
         <div className='qp-right-box'>
           <div className='qp-box-1'>
