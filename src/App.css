@@ -149,3 +149,7 @@
   line-height: 17px;
   color: #454545;
 }
+
+.qp-button-box {
+  display: flex;
+}
