@@ -4,7 +4,7 @@ const PageTwo = () => {
   return (
     <>
       <div className='qp-input'>
-        <input type='text' placeholder='First Name' />
+        <input></input>
       </div>
       <div></div>
       <div className='qp-input'>
