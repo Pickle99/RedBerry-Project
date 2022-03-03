@@ -15,7 +15,7 @@ const PageOne = () => {
 
   return (
     <>
-      <div className='qp-input'>
+      <div className='skill-item qp-input'>
         <input
           {...register('first_name', {
             required: 'Please enter you First Name',
@@ -31,7 +31,7 @@ const PageOne = () => {
       <div>
         {errors?.first_name && <p>{errors?.first_name?.message || 'Error!'}</p>}
       </div>
-      <div className='qp-input'>
+      <div className='qp-input skill-item'>
         <input
           {...register('last_name', {
             required: 'Please enter you Last Name',
@@ -47,7 +47,7 @@ const PageOne = () => {
       <div>
         {errors?.last_name && <p>{errors?.last_name?.message || 'Error!'}</p>}
       </div>
-      <div className='qp-input'>
+      <div className='qp-input skill-item'>
         <input
           {...register('email', {
             required: 'Please enter you E Mail',
@@ -61,7 +61,7 @@ const PageOne = () => {
         />
       </div>
       <div>{errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}</div>
-      <div className='qp-input'>
+      <div className='qp-input skill-item'>
         <input
           {...register('phone', {
             required: true,
