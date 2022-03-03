@@ -32,13 +32,18 @@ const PageTwo = () => {
   };
 
   const addHandleClick = (e) => {
+    console.log(list);
     e.preventDefault();
+
     if (!(selectValue && experience)) {
       console.log('enter values');
+    } else if (1 === 0) {
+      console.log('already exsisted!');
     } else {
       const newItem = {
         id: new Date().getTime().toString(),
         title: selectValue,
+        experience: experience,
       };
       setList([...list, newItem]);
       reset({

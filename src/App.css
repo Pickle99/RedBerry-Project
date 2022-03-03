@@ -241,7 +241,7 @@
   transition: var(--transition);
   padding: 0.25rem 1rem;
   border-radius: var(--radius);
-  text-transform: capitalize;
+
   width: 450px;
   padding: 15px;
 }
@@ -314,3 +314,12 @@
 }
 
 /* */
+
+.experience {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
