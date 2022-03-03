@@ -34,17 +34,21 @@ const PageTwo = () => {
   const addHandleClick = (e) => {
     console.log(list);
     e.preventDefault();
-
+    console.log(skills);
+    console.log(selectValue);
+    const index = skills.findIndex((x) => x.title === selectValue);
+    console.log(index);
     if (!(selectValue && experience)) {
       console.log('enter values');
-    } else if (1 === 0) {
-      console.log('already exsisted!');
     } else {
+      // skills.splice(index, 1);
+
       const newItem = {
         id: new Date().getTime().toString(),
         title: selectValue,
         experience: experience,
       };
+
       setList([...list, newItem]);
       reset({
         experience: '',
@@ -65,11 +69,16 @@ const PageTwo = () => {
           name='select'
           defaultValue={'DEFAULT'}
         >
-          <option value='DEFAULT' disabled>
+          <option value='DEFAULT' disabled hidden>
             Skills
           </option>
           {skills.map((skill) => (
-            <option value={skill.title} key={skill.id}>
+            <option
+              hidden={list.find((item) => item.title === skill.title)}
+              value={skill.title}
+              key={skill.id}
+              disabled={list.find((item) => item.title === skill.title)}
+            >
               {skill.title}
             </option>
           ))}
