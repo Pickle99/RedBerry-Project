@@ -22,6 +22,10 @@ const PageTwo = ({ formData, setFormData }) => {
 
   const removeItem = (id) => {
     setList(list.filter((item) => item.id !== id));
+    setFormData({
+      ...formData,
+      skills: formData.skills.filter((data) => data.id !== id),
+    });
   };
 
   const addHandleClick = (e) => {
@@ -64,7 +68,7 @@ const PageTwo = ({ formData, setFormData }) => {
     <>
       <div className='select-container  '>
         <select
-          onChange={(event) => setSelectedSkill(event.target.value)}
+          onChange={(event) => setSelectedSkill(+event.target.value)}
           name='select'
           defaultValue={'DEFAULT'}
         >
@@ -88,7 +92,7 @@ const PageTwo = ({ formData, setFormData }) => {
         <input
           value={formData.experience}
           onChange={
-            (event) => setSelectedExperience(event.target.value)
+            (event) => setSelectedExperience(Number(event.target.value)) // same as on line 67 with plus, just to showcase
             /*setFormData({
               
               ...formData, 
