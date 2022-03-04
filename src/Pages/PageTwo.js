@@ -27,9 +27,15 @@ const PageTwo = ({ formData, setFormData }) => {
   const addHandleClick = (e) => {
     console.log(selectedSkill, '123123');
     console.log(list);
+    const [selectedSkillFilter] = skillsList.filter(
+      (skill) => skill.id == selectedSkill
+    );
+    console.log(skillsList, 'skillslist');
+    console.log(selectedSkillFilter, '00select');
+
     const newItem = {
       id: new Date().getTime().toString(),
-      title: selectedSkill,
+      title: selectedSkillFilter.title,
       experience: selectedExperience,
     };
 

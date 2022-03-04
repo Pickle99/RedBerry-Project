@@ -12,12 +12,7 @@ const QuestionsPage = () => {
     last_name: '',
     email: '',
     phone: '',
-    skills: [
-      {
-        id: '',
-        experience: '',
-      },
-    ],
+    skills: [],
     work_preference: '',
     had_covid: '',
     had_covid_at: '',
