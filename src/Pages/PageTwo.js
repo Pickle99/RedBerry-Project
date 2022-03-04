@@ -24,7 +24,7 @@ const PageTwo = ({ formData, setFormData }) => {
     setList(list.filter((item) => item.id !== id));
     setFormData({
       ...formData,
-      skills: formData.skills.filter((data) => data.id !== id),
+      skills: formData.skills.filter((item) => item.id !== id),
     });
   };
 
@@ -38,7 +38,7 @@ const PageTwo = ({ formData, setFormData }) => {
     console.log(selectedSkillFilter, '00select');
 
     const newItem = {
-      id: new Date().getTime().toString(),
+      id: selectedSkill,
       title: selectedSkillFilter.title,
       experience: selectedExperience,
     };
