@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import ListA from './ListA';
 
-const PageTwo = () => {
-  const [skills, setSkills] = useState([]);
+const PageTwo = ({ formData, setFormData }) => {
+  const [skillsList, setSkillsList] = useState([]);
   const [list, setList] = useState([]);
-  const [selectValue, setSelectValue] = useState('');
+  const [selectedSkill, setSelectedSkill] = useState('');
+  const [selectedExperience, setSelectedExperience] = useState('');
 
-  const {
-    register,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm({ mode: 'onBlur' });
-  const experience = watch('experience');
   useEffect(() => {
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
       .then((res) => {
         console.log(res);
-        setSkills(res.data);
+        setSkillsList(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -32,43 +25,50 @@ const PageTwo = () => {
   };
 
   const addHandleClick = (e) => {
+    console.log(selectedSkill, '123123');
+    console.log(list);
+    const newItem = {
+      id: new Date().getTime().toString(),
+      title: selectedSkill,
+      experience: selectedExperience,
+    };
+
+    setList([...list, newItem]);
+
+    setFormData({
+      ...formData,
+      // skills: [...formData.skills, 1],
+      skills: [
+        ...formData.skills,
+        { id: selectedSkill, experience: selectedExperience },
+        // (formData.skills[formData.skills.length - 1] = {
+        //   id: 1,
+        //   experience: selectedExperience,
+        // }),
+      ],
+    });
     e.preventDefault();
-    if (!(selectValue && experience)) {
+    console.log(formData);
+    /* if (!(selectValue && formData.experience)) {
       console.log('enter values');
-    } else {
-      const newItem = {
-        id: new Date().getTime().toString(),
-        title: selectValue,
-        experience: experience,
-      };
-
-      setList([...list, newItem]);
-      reset({
-        experience: '',
-      });
-      setSelectValue('');
-    }
-  };
-
-  const selectOnChange = (e) => {
-    setSelectValue(e.target.value);
+    }*/
   };
 
   return (
     <>
       <div className='select-container  '>
         <select
-          onChange={selectOnChange}
+          onChange={(event) => setSelectedSkill(event.target.value)}
           name='select'
           defaultValue={'DEFAULT'}
         >
           <option value='DEFAULT' disabled hidden>
             Skills
           </option>
-          {skills.map((skill) => (
+          {skillsList.map((skill) => (
             <option
               hidden={list.find((item) => item.title === skill.title)}
-              value={skill.title}
+              value={skill.id}
               key={skill.id}
               disabled={list.find((item) => item.title === skill.title)}
             >
@@ -80,14 +80,27 @@ const PageTwo = () => {
 
       <div className='qp-input skill-item'>
         <input
-          {...register('experience', {
-            required: 'Entering your experience is required',
-          })}
+          value={formData.experience}
+          onChange={
+            (event) => setSelectedExperience(event.target.value)
+            /*setFormData({
+              
+              ...formData, 
+              // skills: [...formData.skills, 1],
+              skills: [
+                ...formData.skills,
+                (formData.skills[formData.skills.length - 1] = {
+                  id: formData.skills[formData.skills.length - 1].id,
+                  experience: event.target.value,
+                }),
+              ],
+            }) */
+          }
           type='text'
           placeholder='Experience Duration in years'
         />
       </div>
-      {errors?.experience && <p>{errors?.experience?.message || 'Error!'}</p>}
+
       <div className='APL-button'>
         <button onClick={addHandleClick}>Add Programming Language</button>
       </div>

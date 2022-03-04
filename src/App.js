@@ -8,7 +8,6 @@ import {
   pageTitlesLeftHeader,
   pageTitlesRightInfo,
   pageTitlesRightHeader,
-  pageInputs,
 } from './context/ContextExports';
 function App() {
   const [page, setPage] = useState(0);
@@ -20,7 +19,6 @@ function App() {
         pageTitlesRightHeader,
         page,
         setPage,
-        pageInputs,
       }}
     >
       <div>
