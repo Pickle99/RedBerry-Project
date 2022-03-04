@@ -32,17 +32,10 @@ const PageTwo = () => {
   };
 
   const addHandleClick = (e) => {
-    console.log(list);
     e.preventDefault();
-    console.log(skills);
-    console.log(selectValue);
-    const index = skills.findIndex((x) => x.title === selectValue);
-    console.log(index);
     if (!(selectValue && experience)) {
       console.log('enter values');
     } else {
-      // skills.splice(index, 1);
-
       const newItem = {
         id: new Date().getTime().toString(),
         title: selectValue,
