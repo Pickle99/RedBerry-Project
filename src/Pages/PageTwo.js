@@ -84,6 +84,12 @@ const PageTwo = ({
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
 
+  useEffect(() => {
+    if (selectedExperience === 0) {
+      return setSelectedExperience('');
+    }
+  }, [selectedExperience]);
+
   return (
     <>
       <div className='select-container  '>
@@ -128,7 +134,7 @@ const PageTwo = ({
               ],
             }) */
 
-          type='text'
+          type='number'
           placeholder='Experience Duration in years'
         />
       </div>
