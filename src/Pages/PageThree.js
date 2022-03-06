@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const getLocalStoragePageThree_3 = () => {
+const getLocalStoragePageThree_1 = () => {
   let hadCovid = localStorage.getItem('hadCovid');
 
   if (hadCovid) {
@@ -18,14 +18,29 @@ const getLocalStoragePageThree_2 = () => {
     return false;
   }
 };
+const getLocalStoragePageThree_3 = () => {
+  let workPreference = localStorage.getItem('workPreference');
+
+  if (workPreference) {
+    return JSON.parse(localStorage.getItem('workPreference'));
+  } else {
+    return '';
+  }
+};
 
 const PageThree = ({ formData, setFormData }) => {
-  const [hadCovid, setHadCovid] = useState(getLocalStoragePageThree_3());
+  const [hadCovid, setHadCovid] = useState(getLocalStoragePageThree_1());
   const [vaccinated, setVaccinated] = useState(getLocalStoragePageThree_2());
+  const [workPreference, setWorkPreference] = useState(
+    getLocalStoragePageThree_3()
+  );
   const [checkedYe, setCheckedYe] = useState(false);
   const [checkedNo, setCheckedNo] = useState(false);
   const [checkedYe2, setCheckedYe2] = useState(false);
   const [checkedNo2, setCheckedNo2] = useState(false);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
 
   useEffect(() => {
     if (hadCovid === true) {
@@ -54,6 +69,22 @@ const PageThree = ({ formData, setFormData }) => {
   }, [vaccinated]);
 
   useEffect(() => {
+    if (workPreference == 'from_office') {
+      setChecked1(true);
+      setChecked2(false);
+      setChecked3(false);
+    } else if (workPreference == 'from_home') {
+      setChecked1(false);
+      setChecked2(true);
+      setChecked3(false);
+    } else {
+      setChecked1(false);
+      setChecked2(false);
+      setChecked3(true);
+    }
+  }, [workPreference]);
+
+  useEffect(() => {
     localStorage.setItem('hadCovid', JSON.stringify(hadCovid));
     setFormData({ ...formData, had_covid: hadCovid });
   }, [hadCovid]);
@@ -62,6 +93,11 @@ const PageThree = ({ formData, setFormData }) => {
     localStorage.setItem('vaccinated', JSON.stringify(vaccinated));
     setFormData({ ...formData, vaccinated: vaccinated });
   }, [vaccinated]);
+
+  useEffect(() => {
+    localStorage.setItem('workPreference', JSON.stringify(workPreference));
+    setFormData({ ...formData, work_preference: workPreference });
+  }, [workPreference]);
 
   return (
     <>
@@ -72,9 +108,8 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             name='work_preference'
             value='from_office'
-            onChange={(event) =>
-              setFormData({ ...formData, work_preference: event.target.value })
-            }
+            checked={checked1}
+            onChange={(e) => setWorkPreference(e.target.value)}
           />
           <p className='qp-input-info'>From Sairme Office</p>
         </div>
@@ -83,9 +118,8 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             name='work_preference'
             value='from_home'
-            onChange={(event) =>
-              setFormData({ ...formData, work_preference: event.target.value })
-            }
+            checked={checked2}
+            onChange={(e) => setWorkPreference(e.target.value)}
           />
           <p className='qp-input-info'>From Home</p>
         </div>
@@ -94,9 +128,8 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             name='work_preference'
             value='hybrid'
-            onChange={(event) =>
-              setFormData({ ...formData, work_preference: event.target.value })
-            }
+            checked={checked3}
+            onChange={(e) => setWorkPreference(e.target.value)}
           />
           <p className='qp-input-info'>Hybrid</p>
         </div>
