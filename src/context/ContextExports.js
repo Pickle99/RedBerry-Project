@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const pageTitlesLeftHeader = [
   'Hey, Rocketeer, what are your coordinates?',
   'Tell us about your skills',

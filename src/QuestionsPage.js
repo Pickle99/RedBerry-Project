@@ -69,7 +69,9 @@ const QuestionsPage = () => {
     <div className='qp-container'>
       <div className='qp-left'>
         <div className='qp-left-box'>
-          <div className='qp-left-header-box'></div>
+          <div className='qp-left-header-box qp-left-header'>
+            {pageTitlesLeftHeader[page]}
+          </div>
           <div className='qp-input-container'>
             <form>{InputDisplay()}</form>
           </div>
