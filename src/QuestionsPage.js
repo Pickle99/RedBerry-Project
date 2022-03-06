@@ -22,6 +22,8 @@ const QuestionsPage = () => {
     devtalk_topic: '',
     something_special: '',
   });
+  const [selectedExperience, setSelectedExperience] = useState('');
+
   const {
     page,
     setPage,
@@ -34,7 +36,14 @@ const QuestionsPage = () => {
     if (page === 0) {
       return <PageOne formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <PageTwo formData={formData} setFormData={setFormData} />;
+      return (
+        <PageTwo
+          formData={formData}
+          setFormData={setFormData}
+          selectedExperience={selectedExperience}
+          setSelectedExperience={setSelectedExperience}
+        />
+      );
     } else if (page === 2) {
       return <PageThree formData={formData} setFormData={setFormData} />;
     } else if (page === 3) {

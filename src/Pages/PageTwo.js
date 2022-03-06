@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListA from './ListA';
 
-const PageTwo = ({ formData, setFormData }) => {
+const PageTwo = ({
+  formData,
+  setFormData,
+  selectedExperience,
+  setSelectedExperience,
+}) => {
   const [skillsList, setSkillsList] = useState([]);
   const [list, setList] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState('');
-  const [selectedExperience, setSelectedExperience] = useState('');
 
   useEffect(() => {
     axios
@@ -70,9 +74,9 @@ const PageTwo = ({ formData, setFormData }) => {
         <select
           onChange={(event) => setSelectedSkill(+event.target.value)}
           name='select'
-          defaultValue={'DEFAULT'}
+          defaultValue='default'
         >
-          <option value='DEFAULT' disabled hidden>
+          <option value='default' disabled hidden>
             Skills
           </option>
           {skillsList.map((skill) => (
@@ -90,12 +94,14 @@ const PageTwo = ({ formData, setFormData }) => {
 
       <div className='qp-input skill-item'>
         <input
-          value={formData.experience}
           onChange={
             (event) => setSelectedExperience(Number(event.target.value)) // same as on line 67 with plus, just to showcase
-            /*setFormData({
+          }
+          name='experience'
+          value={selectedExperience}
+          /*setFormData({
               
-              ...formData, 
+           //   ...formData, 
               // skills: [...formData.skills, 1],
               skills: [
                 ...formData.skills,
@@ -105,7 +111,7 @@ const PageTwo = ({ formData, setFormData }) => {
                 }),
               ],
             }) */
-          }
+
           type='text'
           placeholder='Experience Duration in years'
         />
