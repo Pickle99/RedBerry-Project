@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListA from './ListA';
 
+const getLocalStorage = () => {
+  let list = localStorage.getItem('list');
+  if (list) {
+    return JSON.parse(localStorage.getItem('list'));
+  } else {
+    return [];
+  }
+};
+
 const PageTwo = ({
   formData,
   setFormData,
@@ -9,7 +18,7 @@ const PageTwo = ({
   setSelectedExperience,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getLocalStorage());
   const [selectedSkill, setSelectedSkill] = useState('');
 
   useEffect(() => {
@@ -67,6 +76,10 @@ const PageTwo = ({
       console.log('enter values');
     }*/
   };
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
 
   return (
     <>
