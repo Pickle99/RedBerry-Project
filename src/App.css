@@ -144,6 +144,45 @@
   padding: 20px;
   width: 430px;
 }
+.qp-input-radio {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 60px;
+}
+
+.qp-input-radio-box {
+  display: flex;
+  padding: 10px;
+}
+
+.qp-input-radio-box p {
+  padding-left: 10px;
+}
+.qp-input-radio-box input {
+  padding-top: 10px;
+}
+
+.qp-input-headers {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #000000;
+}
+
+.qp-input-info {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
 
 .qp-input input {
   padding: 20px 0px 20px 40px;
@@ -322,4 +361,10 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+}
+
+/* for block */
+
+.hide {
+  display: none;
 }
