@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListA from './ListA';
 
-const getLocalStorage = () => {
+const getLocalStoragePageTwo = () => {
   let list = localStorage.getItem('list');
+
   if (list) {
     return JSON.parse(localStorage.getItem('list'));
   } else {
@@ -18,9 +19,8 @@ const PageTwo = ({
   setSelectedExperience,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
-  const [list, setList] = useState(getLocalStorage());
+  const [list, setList] = useState(getLocalStoragePageTwo());
   const [selectedSkill, setSelectedSkill] = useState('');
-
   useEffect(() => {
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
@@ -49,7 +49,7 @@ const PageTwo = ({
     );
     console.log(skillsList, 'skillslist');
     console.log(selectedSkillFilter, '00select');
-
+    setSelectedSkill('');
     const newItem = {
       id: selectedSkill,
       title: selectedSkillFilter.title,
@@ -131,7 +131,12 @@ const PageTwo = ({
       </div>
 
       <div className='APL-button'>
-        <button onClick={addHandleClick}>Add Programming Language</button>
+        <button
+          onClick={addHandleClick}
+          disabled={!(selectedSkill & selectedExperience)}
+        >
+          Add Programming Language
+        </button>
       </div>
       {list.length > 0 && (
         <div className='skill-container'>

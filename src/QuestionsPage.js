@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from './context/Context';
 import PageOne from './Pages/PageOne';
 import PageTwo from './Pages/PageTwo';
@@ -6,23 +6,37 @@ import PageThree from './Pages/PageThree';
 import PageFour from './Pages/PageFour';
 import PageFiveEnd from './Pages/PageFiveEnd';
 
+const getLocalStoragePageOne = () => {
+  let formData = localStorage.getItem('formData');
+  if (formData) {
+    return JSON.parse(localStorage.getItem('formData'));
+  } else {
+    return {
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone: '',
+      skills: [],
+      work_preference: '',
+      had_covid: '',
+      had_covid_at: '',
+      vaccinated: '',
+      vaccinated_at: '',
+      will_organize_devtalk: '',
+      devtalk_topic: '',
+      something_special: '',
+    };
+  }
+};
+
 const QuestionsPage = () => {
-  const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone: '',
-    skills: [],
-    work_preference: '',
-    had_covid: '',
-    had_covid_at: '',
-    vaccinated: '',
-    vaccinated_at: '',
-    will_organize_devtalk: '',
-    devtalk_topic: '',
-    something_special: '',
-  });
+  const [formData, setFormData] = useState(getLocalStoragePageOne());
+
   const [selectedExperience, setSelectedExperience] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
 
   const {
     page,

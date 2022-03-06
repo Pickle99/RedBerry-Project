@@ -10,24 +10,6 @@ const PageThree = () => {
       <div className='qp-input'>
         <input type='text' placeholder='Last Name' />
       </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
-      <div className='qp-input'>
-        <input type='text' placeholder='Last Name' />
-      </div>
     </>
   );
 };
