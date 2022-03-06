@@ -21,6 +21,7 @@ const PageTwo = ({
   const [skillsList, setSkillsList] = useState([]);
   const [list, setList] = useState(getLocalStoragePageTwo());
   const [selectedSkill, setSelectedSkill] = useState('');
+
   useEffect(() => {
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
@@ -50,6 +51,8 @@ const PageTwo = ({
     console.log(skillsList, 'skillslist');
     console.log(selectedSkillFilter, '00select');
     setSelectedSkill('');
+    setSelectedExperience('');
+
     const newItem = {
       id: selectedSkill,
       title: selectedSkillFilter.title,
@@ -133,7 +136,7 @@ const PageTwo = ({
       <div className='APL-button'>
         <button
           onClick={addHandleClick}
-          disabled={!(selectedSkill & selectedExperience)}
+          disabled={!(selectedSkill && selectedExperience)}
         >
           Add Programming Language
         </button>

@@ -31,9 +31,7 @@ const getLocalStoragePageOne = () => {
 
 const QuestionsPage = () => {
   const [formData, setFormData] = useState(getLocalStoragePageOne());
-
   const [selectedExperience, setSelectedExperience] = useState('');
-
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));
   }, [formData]);
