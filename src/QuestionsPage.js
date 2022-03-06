@@ -19,7 +19,9 @@ const getLocalStoragePageOne = () => {
       skills: [],
       work_preference: '',
       had_covid: '',
+      had_covid_at: '',
       vaccinated: '',
+      vaccinated_at: '',
       will_organize_devtalk: '',
       devtalk_topic: '',
       something_special: '',
@@ -28,7 +30,7 @@ const getLocalStoragePageOne = () => {
 };
 
 const QuestionsPage = () => {
-  const [formData, setFormData] = useState(getLocalStoragePageOne());
+  let [formData, setFormData] = useState(getLocalStoragePageOne());
   const [selectedExperience, setSelectedExperience] = useState('');
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));

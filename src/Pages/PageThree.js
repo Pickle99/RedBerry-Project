@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const getLocalStoragePageThree = () => {
+const getLocalStoragePageThree_3 = () => {
   let hadCovid = localStorage.getItem('hadCovid');
 
   if (hadCovid) {
@@ -20,8 +20,38 @@ const getLocalStoragePageThree_2 = () => {
 };
 
 const PageThree = ({ formData, setFormData }) => {
-  const [hadCovid, setHadCovid] = useState(getLocalStoragePageThree());
+  const [hadCovid, setHadCovid] = useState(getLocalStoragePageThree_3());
   const [vaccinated, setVaccinated] = useState(getLocalStoragePageThree_2());
+  const [checkedYe, setCheckedYe] = useState(false);
+  const [checkedNo, setCheckedNo] = useState(false);
+  const [checkedYe2, setCheckedYe2] = useState(false);
+  const [checkedNo2, setCheckedNo2] = useState(false);
+
+  useEffect(() => {
+    if (hadCovid === true) {
+      setCheckedNo(false);
+      setCheckedYe(true);
+    } else if (hadCovid === false) {
+      setCheckedYe(false);
+      setCheckedNo(true);
+    } else {
+      setCheckedYe(false);
+      setCheckedNo(false);
+    }
+  }, [hadCovid]);
+
+  useEffect(() => {
+    if (vaccinated === true) {
+      setCheckedNo2(false);
+      setCheckedYe2(true);
+    } else if (vaccinated === false) {
+      setCheckedYe2(false);
+      setCheckedNo2(true);
+    } else {
+      setCheckedYe2(false);
+      setCheckedNo2(false);
+    }
+  }, [vaccinated]);
 
   useEffect(() => {
     localStorage.setItem('hadCovid', JSON.stringify(hadCovid));
@@ -41,7 +71,7 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='work_preference'
-            value='from_sairme_office'
+            value='from_office'
             onChange={(event) =>
               setFormData({ ...formData, work_preference: event.target.value })
             }
@@ -49,11 +79,25 @@ const PageThree = ({ formData, setFormData }) => {
           <p className='qp-input-info'>From Sairme Office</p>
         </div>
         <div className='qp-input-radio-box'>
-          <input type='radio' name='work_preference' />
+          <input
+            type='radio'
+            name='work_preference'
+            value='from_home'
+            onChange={(event) =>
+              setFormData({ ...formData, work_preference: event.target.value })
+            }
+          />
           <p className='qp-input-info'>From Home</p>
         </div>
         <div className='qp-input-radio-box'>
-          <input type='radio' name='work_preference' />
+          <input
+            type='radio'
+            name='work_preference'
+            value='hybrid'
+            onChange={(event) =>
+              setFormData({ ...formData, work_preference: event.target.value })
+            }
+          />
           <p className='qp-input-info'>Hybrid</p>
         </div>
       </div>
@@ -64,8 +108,7 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='had_covid'
-            checked={hadCovid ? true : false}
-            value={true}
+            checked={checkedYe}
             onChange={() => setHadCovid(true)}
           />
           <p className='qp-input-info'>Yes</p>
@@ -73,10 +116,10 @@ const PageThree = ({ formData, setFormData }) => {
         <div className='qp-input-radio-box'>
           <input
             type='radio'
-            checked={hadCovid ? false : true}
-            value={false}
+            onClick={() => setFormData({ ...formData, had_covid_at: '' })}
             onChange={() => setHadCovid(false)}
             name='had_covid'
+            checked={checkedNo}
           />
           <p className='qp-input-info'>No</p>
         </div>
@@ -89,7 +132,7 @@ const PageThree = ({ formData, setFormData }) => {
               className='qp-input'
               type='date'
               name='had_covid_at'
-              value={hadCovid ? formData.had_covid_at : null}
+              value={formData.had_covid_at}
               onChange={(event) =>
                 setFormData({ ...formData, had_covid_at: event.target.value })
               }
@@ -104,9 +147,8 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='vaccinated'
-            value={true}
-            checked={vaccinated ? true : false}
             onChange={() => setVaccinated(true)}
+            checked={checkedYe2}
           />
           <p className='qp-input-info'>Yes</p>
         </div>
@@ -114,9 +156,9 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='vaccinated'
-            value={false}
-            checked={vaccinated ? false : true}
+            onClick={() => setFormData({ ...formData, vaccinated_at: '' })}
             onChange={() => setVaccinated(false)}
+            checked={checkedNo2}
           />
           <p className='qp-input-info'>No</p>
         </div>
@@ -127,7 +169,15 @@ const PageThree = ({ formData, setFormData }) => {
         </p>
         <div className='qp-input-radio'>
           <div>
-            <input className='qp-input' type='date' name='vaccinated_at' />
+            <input
+              className='qp-input'
+              value={formData.vaccinated_at}
+              onChange={(event) =>
+                setFormData({ ...formData, vaccinated_at: event.target.value })
+              }
+              type='date'
+              name='vaccinated_at'
+            />
           </div>
         </div>
       </div>
