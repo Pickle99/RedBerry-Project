@@ -19,9 +19,9 @@ const getLocalStoragePageOne = () => {
       skills: [],
       work_preference: '',
       had_covid: '',
-      had_covid_at: '',
+      had_covid_at: Date,
       vaccinated: '',
-      vaccinated_at: '',
+      vaccinated_at: Date,
       will_organize_devtalk: '',
       devtalk_topic: '',
       something_special: '',
@@ -86,7 +86,7 @@ const QuestionsPage = () => {
           </button>
           <button
             className='button-next'
-            disabled={page == pageTitlesLeftHeader.length - 1}
+            disabled={page == pageTitlesLeftHeader.length}
             onClick={() => setPage((currPage) => currPage + 1)}
           >
             next

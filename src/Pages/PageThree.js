@@ -9,6 +9,7 @@ const getLocalStoragePageThree_1 = () => {
     return false;
   }
 };
+
 const getLocalStoragePageThree_2 = () => {
   let vaccinated = localStorage.getItem('vaccinated');
 
@@ -18,11 +19,32 @@ const getLocalStoragePageThree_2 = () => {
     return false;
   }
 };
+
 const getLocalStoragePageThree_3 = () => {
   let workPreference = localStorage.getItem('workPreference');
 
   if (workPreference) {
     return JSON.parse(localStorage.getItem('workPreference'));
+  } else {
+    return '';
+  }
+};
+
+const getLocalStoragePageThree_4 = () => {
+  let hadCovidValue = localStorage.getItem('hadCovidValue');
+
+  if (hadCovidValue) {
+    return JSON.parse(localStorage.getItem('hadCovidValue'));
+  } else {
+    return '';
+  }
+};
+
+const getLocalStoragePageThree_5 = () => {
+  let hadVaccineValue = localStorage.getItem('hadVaccineValue');
+
+  if (hadVaccineValue) {
+    return JSON.parse(localStorage.getItem('hadVaccineValue'));
   } else {
     return '';
   }
@@ -34,6 +56,14 @@ const PageThree = ({ formData, setFormData }) => {
   const [workPreference, setWorkPreference] = useState(
     getLocalStoragePageThree_3()
   );
+
+  const [hadCovidValue, setHadCovidValue] = useState(
+    getLocalStoragePageThree_4()
+  );
+  const [hadVaccineValue, setHadVaccineValue] = useState(
+    getLocalStoragePageThree_5()
+  );
+
   const [checkedYe, setCheckedYe] = useState(false);
   const [checkedNo, setCheckedNo] = useState(false);
   const [checkedYe2, setCheckedYe2] = useState(false);
@@ -99,6 +129,16 @@ const PageThree = ({ formData, setFormData }) => {
     setFormData({ ...formData, work_preference: workPreference });
   }, [workPreference]);
 
+  useEffect(() => {
+    localStorage.setItem('hadCovidValue', JSON.stringify(hadCovidValue));
+    setFormData({ ...formData, had_covid_at: hadCovidValue });
+  }, [hadCovidValue]);
+
+  useEffect(() => {
+    localStorage.setItem('hadVaccineValue', JSON.stringify(hadVaccineValue));
+    setFormData({ ...formData, vaccinated_at: hadVaccineValue });
+  }, [hadVaccineValue]);
+
   return (
     <>
       <p className='qp-input-headers'>How would you prefer to work</p>
@@ -149,7 +189,7 @@ const PageThree = ({ formData, setFormData }) => {
         <div className='qp-input-radio-box'>
           <input
             type='radio'
-            onClick={() => setFormData({ ...formData, had_covid_at: '' })}
+            onClick={() => setFormData({ ...formData, had_covid_at: Date })}
             onChange={() => setHadCovid(false)}
             name='had_covid'
             checked={checkedNo}
@@ -165,10 +205,8 @@ const PageThree = ({ formData, setFormData }) => {
               className='qp-input'
               type='date'
               name='had_covid_at'
-              value={formData.had_covid_at}
-              onChange={(event) =>
-                setFormData({ ...formData, had_covid_at: event.target.value })
-              }
+              value={hadCovidValue}
+              onChange={(e) => setHadCovidValue(e.target.value)}
             />
           </div>
         </div>
@@ -189,7 +227,7 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='vaccinated'
-            onClick={() => setFormData({ ...formData, vaccinated_at: '' })}
+            onClick={() => setFormData({ ...formData, vaccinated_at: Date })}
             onChange={() => setVaccinated(false)}
             checked={checkedNo2}
           />
@@ -204,12 +242,10 @@ const PageThree = ({ formData, setFormData }) => {
           <div>
             <input
               className='qp-input'
-              value={formData.vaccinated_at}
-              onChange={(event) =>
-                setFormData({ ...formData, vaccinated_at: event.target.value })
-              }
               type='date'
               name='vaccinated_at'
+              value={hadVaccineValue}
+              onChange={(e) => setHadVaccineValue(e.target.value)}
             />
           </div>
         </div>

@@ -65,7 +65,7 @@ const PageThree = ({ formData, setFormData }) => {
           <textarea
             cols='70'
             rows='4'
-            placeHolder='I would...'
+            placeholder='I would...'
             value={formData.devtalk_topic}
             onChange={(event) =>
               setFormData({ ...formData, devtalk_topic: event.target.value })
@@ -78,7 +78,7 @@ const PageThree = ({ formData, setFormData }) => {
             <textarea
               cols='70'
               rows='1'
-              placeHolder='I...'
+              placeholder='I...'
               value={formData.something_special}
               onChange={(event) =>
                 setFormData({
