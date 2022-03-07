@@ -3,8 +3,7 @@ import '../App.css';
 
 const PageOne = ({ formData, setFormData }) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  const geoNumberRegex =
-    /(((\+){1}995){1})? ?-?[56789]{1}[0-9]{9}$/gm; /* incomplete, im not strong in regex-s, i create this one by myself but its doesnt work correctly ;d im sorry, maybe will change this in next commits if will find answer */
+  const geoNumberRegex = /(((\+){1}995){1})? ?-?[56789]{1}[0-9]{9}$/gm;
 
   return (
     <>

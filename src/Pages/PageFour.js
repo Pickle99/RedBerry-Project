@@ -13,22 +13,6 @@ const getLocalStoragePageFour = () => {
 const PageThree = ({ formData, setFormData }) => {
   const [devtalk, setDevtalk] = useState(getLocalStoragePageFour());
 
-  const [checkedYe3, setCheckedYe3] = useState(false);
-  const [checkedNo3, setCheckedNo3] = useState(false);
-
-  useEffect(() => {
-    if (devtalk === true) {
-      setCheckedNo3(false);
-      setCheckedYe3(true);
-    } else if (devtalk === false) {
-      setCheckedYe3(false);
-      setCheckedNo3(true);
-    } else {
-      setCheckedYe3(false);
-      setCheckedNo3(false);
-    }
-  }, [devtalk]);
-
   useEffect(() => {
     localStorage.setItem('devtalk', JSON.stringify(devtalk));
     setFormData({ ...formData, will_organize_devtalk: devtalk });
@@ -44,8 +28,8 @@ const PageThree = ({ formData, setFormData }) => {
           <input
             type='radio'
             name='will_organize_devtalk'
-            checked={checkedYe3}
             onChange={() => setDevtalk(true)}
+            checked={devtalk}
           />
           <p className='qp-input-info'>Yes</p>
         </div>
@@ -54,7 +38,7 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             onChange={() => setDevtalk(false)}
             name='will_organize_devtalk'
-            checked={checkedNo3}
+            checked={!devtalk}
           />
           <p className='qp-input-info'>No</p>
         </div>

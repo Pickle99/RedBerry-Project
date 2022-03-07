@@ -63,21 +63,13 @@ const PageTwo = ({
 
     setFormData({
       ...formData,
-      // skills: [...formData.skills, 1],
       skills: [
         ...formData.skills,
         { id: selectedSkill, experience: selectedExperience },
-        // (formData.skills[formData.skills.length - 1] = {
-        //   id: 1,
-        //   experience: selectedExperience,
-        // }),
       ],
     });
     e.preventDefault();
     console.log(formData);
-    /* if (!(selectValue && formData.experience)) {
-      console.log('enter values');
-    }*/
   };
 
   useEffect(() => {
@@ -121,19 +113,6 @@ const PageTwo = ({
           }
           name='experience'
           value={selectedExperience}
-          /*setFormData({
-              
-           //   ...formData, 
-              // skills: [...formData.skills, 1],
-              skills: [
-                ...formData.skills,
-                (formData.skills[formData.skills.length - 1] = {
-                  id: formData.skills[formData.skills.length - 1].id,
-                  experience: event.target.value,
-                }),
-              ],
-            }) */
-
           type='number'
           placeholder='Experience Duration in years'
         />
