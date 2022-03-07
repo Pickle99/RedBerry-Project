@@ -2,24 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListA from './ListA';
 
-const getLocalStoragePageTwo = () => {
-  let list = localStorage.getItem('list');
-
-  if (list) {
-    return JSON.parse(localStorage.getItem('list'));
-  } else {
-    return [];
-  }
-};
-
 const PageTwo = ({
   formData,
   setFormData,
   selectedExperience,
   setSelectedExperience,
+  list,
+  setList,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
-  const [list, setList] = useState(getLocalStoragePageTwo());
+
   const [selectedSkill, setSelectedSkill] = useState('');
 
   useEffect(() => {

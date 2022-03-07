@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-const getLocalStoragePageFour = () => {
-  let devtalk = localStorage.getItem('devtalk');
-
-  if (devtalk) {
-    return JSON.parse(localStorage.getItem('devtalk'));
-  } else {
-    return false;
-  }
-};
-
-const PageThree = ({ formData, setFormData }) => {
-  const [devtalk, setDevtalk] = useState(getLocalStoragePageFour());
+const PageThree = ({ formData, setFormData, devtalk, setDevtalk }) => {
+  const [checkedValuesDevtalk, setCheckedValuesDevtalk] = useState({
+    yes: false,
+    no: false,
+  });
 
   useEffect(() => {
     localStorage.setItem('devtalk', JSON.stringify(devtalk));
     setFormData({ ...formData, will_organize_devtalk: devtalk });
+
+    if (devtalk === true) {
+      setCheckedValuesDevtalk({
+        ...checkedValuesDevtalk,
+        yes: true,
+        no: false,
+      });
+    } else if (devtalk === false) {
+      setCheckedValuesDevtalk({
+        ...checkedValuesDevtalk,
+        yes: false,
+        no: true,
+      });
+    } else {
+      setCheckedValuesDevtalk({
+        ...checkedValuesDevtalk,
+        yes: false,
+        no: false,
+      });
+    }
   }, [devtalk]);
 
   return (
@@ -29,7 +42,7 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             name='will_organize_devtalk'
             onChange={() => setDevtalk(true)}
-            checked={devtalk}
+            checked={checkedValuesDevtalk.yes}
           />
           <p className='qp-input-info'>Yes</p>
         </div>
@@ -38,7 +51,7 @@ const PageThree = ({ formData, setFormData }) => {
             type='radio'
             onChange={() => setDevtalk(false)}
             name='will_organize_devtalk'
-            checked={!devtalk}
+            checked={checkedValuesDevtalk.no}
           />
           <p className='qp-input-info'>No</p>
         </div>

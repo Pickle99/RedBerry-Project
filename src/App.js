@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LandingPage from './LandingPage';
 import { Routes, Route } from 'react-router-dom';
 import QuestionsPage from './QuestionsPage';
@@ -9,8 +9,24 @@ import {
   pageTitlesRightInfo,
   pageTitlesRightHeader,
 } from './context/ContextExports';
+
+const getLocalStorageForPage = () => {
+  let page = localStorage.getItem('page');
+
+  if (page) {
+    return JSON.parse(localStorage.getItem('page'));
+  } else {
+    return 0;
+  }
+};
+
 function App() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(getLocalStorageForPage());
+
+  useEffect(() => {
+    localStorage.setItem('page', JSON.stringify(page));
+  }, [page]);
+
   return (
     <Context.Provider
       value={{

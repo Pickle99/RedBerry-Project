@@ -1,10 +1,21 @@
 import React from 'react';
 import axios from 'axios';
-const PageFiveEnd = ({ formData, setFormData }) => {
+const PageFiveEnd = ({
+  formData,
+  setFormData,
+  setWorkPreference,
+  setHadCovid,
+  setHadVaccinated,
+  setDevtalk,
+  setList,
+  setPage,
+}) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log(formData);
 
     axios.post(url, {
@@ -38,6 +49,12 @@ const PageFiveEnd = ({ formData, setFormData }) => {
       devtalk_topic: '',
       something_special: '',
     });
+    setWorkPreference('');
+    setHadCovid('');
+    setHadVaccinated('');
+    setDevtalk('');
+    setList([]);
+    setPage(0);
   };
 
   return (
