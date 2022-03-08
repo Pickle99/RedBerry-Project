@@ -11,7 +11,6 @@ const PageOne = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
-  page,
   setPage,
 }) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;

@@ -10,7 +10,6 @@ const PageThree = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
-  page,
   setPage,
 }) => {
   const [checkedValuesDevtalk, setCheckedValuesDevtalk] = useState({
@@ -171,7 +170,7 @@ const PageThree = ({
         <div className='qp-right'>
           <div className='qp-right-box'>
             <div className='qp-box-1'>
-              <p className='qp-right-header'>Redberry Covid Policies</p>
+              <p className='qp-right-header'>Redberrian Insights</p>
               <div className='qp-box-2'>
                 <p className='qp-right-text'>
                   We were soo much fun before the pandemic started! Parties

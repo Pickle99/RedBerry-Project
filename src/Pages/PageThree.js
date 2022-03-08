@@ -17,7 +17,6 @@ const PageThree = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
-  page,
   setPage,
 }) => {
   const [checkedValuesWork, setCheckedValuesWork] = useState({

@@ -4,7 +4,7 @@ import PageOne from './Pages/PageOne';
 import PageTwo from './Pages/PageTwo';
 import PageThree from './Pages/PageThree';
 import PageFour from './Pages/PageFour';
-import PageFiveEnd from './Pages/PageFiveEnd';
+import PageFive from './Pages/PageFive';
 import ThankPage from './Pages/ThankPage';
 const getLocalStoragePageOne = () => {
   let formData = localStorage.getItem('formData');
@@ -236,7 +236,7 @@ const QuestionsPage = () => {
       );
     } else if (page === 4) {
       return (
-        <PageFiveEnd
+        <PageFive
           formData={formData}
           setFormData={setFormData}
           setWorkPreference={setWorkPreference}

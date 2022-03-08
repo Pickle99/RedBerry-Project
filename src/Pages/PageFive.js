@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const PageFiveEnd = ({
+const PageFive = ({
   formData,
   setFormData,
   setWorkPreference,
@@ -83,4 +83,4 @@ const PageFiveEnd = ({
   );
 };
 
-export default PageFiveEnd;
+export default PageFive;

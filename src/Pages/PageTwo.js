@@ -14,7 +14,6 @@ const PageTwo = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
-  page,
   setPage,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
@@ -25,7 +24,6 @@ const PageTwo = ({
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
       .then((res) => {
-        console.log(res);
         setSkillsList(res.data);
       })
       .catch((err) => {
