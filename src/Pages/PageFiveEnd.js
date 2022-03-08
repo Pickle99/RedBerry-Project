@@ -65,6 +65,7 @@ const PageFiveEnd = ({
     setHadCovidValue('');
     setHadVaccineValue('');
     setPhoneValue('');
+    setPage(5);
   };
 
   return (

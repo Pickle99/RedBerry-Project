@@ -144,6 +144,7 @@
   padding: 20px;
   width: 430px;
 }
+
 .qp-input-radio {
   display: flex;
   flex-direction: column;
@@ -469,4 +470,25 @@ textarea {
 }
 .fpb-box-submit button:hover {
   cursor: pointer;
+}
+
+.icon-delete {
+  color: #eb3535;
+  font-size: 20px;
+}
+
+.icon-delete:hover {
+  cursor: pointer;
+}
+
+.thank-page {
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 96px;
+  line-height: 119px;
+  text-align: center;
+  padding-top: 400px;
+
+  color: #fe3b1f;
 }

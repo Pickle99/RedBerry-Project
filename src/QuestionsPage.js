@@ -251,6 +251,8 @@ const QuestionsPage = () => {
           page={page}
         />
       );
+    } else if (page === 5) {
+      return <ThankPage setPage={setPage} />;
     }
   }
 

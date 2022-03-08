@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTrash } from 'react-icons/fa';
+import { AiOutlineMinusCircle } from 'react-icons/ai';
 const ListA = ({ items, removeItem }) => {
   return (
     <div className='skill-list'>
@@ -15,7 +15,7 @@ const ListA = ({ items, removeItem }) => {
                 className='delete-btn'
                 type='button'
               >
-                <FaTrash />
+                <AiOutlineMinusCircle className='icon-delete' />
               </button>
             </div>
           </article>
