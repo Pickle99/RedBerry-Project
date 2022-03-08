@@ -130,3 +130,17 @@ nav label {
   display: flex;
   flex-direction: column;
 }
+
+.box-a {
+  padding-bottom: 120px;
+}
+
+.right {
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+
+.container-boxer {
+  display: flex;
+}

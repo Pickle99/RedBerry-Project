@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import './AppsPage.css';
+import UserSkills from './UserSkills';
 
 const User = ({
   name,
@@ -12,6 +13,7 @@ const User = ({
   hadcovidat,
   vaccinated,
   vaccinatedat,
+  skills,
 }) => {
   const [showHide, setShowHide] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
@@ -81,121 +83,148 @@ const User = ({
 
         <div className={showHide ? 'menu' : 'hide'}>
           <div className='container-boxer'>
-            <p className='PSCI-p'>User info</p>
+            <div className='lefter'>
+              <div className='container-boxer-2'>
+                <div className='box-a'>
+                  <p className='PSCI-p'>User info</p>
 
-            <div className='boxing'>
-              <div className='boxing-box'>
-                <p>First Name</p>
-                <p>Last Name</p>
-                <p>Email</p>
-                <p className={phoneCheck ? 'empty' : 'hide'}>Phone</p>
-              </div>
-              <div className='boxing-box2'>
-                <p className='boxing-fetch'>{name}</p>
-                <p className='boxing-fetch'>{lastname}</p>
-                <p className='boxing-fetch'>{email}</p>
-                <p className='boxing-fetch'>{phone}</p>
-              </div>
-            </div>
-          </div>
-          <div className='container-boxer'>
-            <p className='PSCI-p'>Covid Situation</p>
-            <p className='p-headers'> how would you prefer to work?</p>
+                  <div className='boxing'>
+                    <div className='boxing-box'>
+                      <p>First Name</p>
+                      <p>Last Name</p>
+                      <p>Email</p>
+                      <p className={phoneCheck ? 'empty' : 'hide'}>Phone</p>
+                    </div>
+                    <div className='boxing-box2'>
+                      <p className='boxing-fetch'>{name}</p>
+                      <p className='boxing-fetch'>{lastname}</p>
+                      <p className='boxing-fetch'>{email}</p>
+                      <p className='boxing-fetch'>{phone}</p>
+                    </div>
+                  </div>
+                </div>
 
-            <div className='qp-input-radio'>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value='from_office'
-                  defaultChecked={CheckerForWork('from_office')}
-                  disabled={CheckerForWork('from_office')}
-                />
-                <p className='qp-input-info'>From Sairme Office</p>
-              </div>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value='from_home'
-                  defaultChecked={CheckerForWork('from_home')}
-                  disabled={CheckerForWork('from_home')}
-                />
-                <p className='qp-input-info'>From Home</p>
-              </div>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value='hybrid'
-                  defaultChecked={CheckerForWork('hybrid')}
-                  disabled={CheckerForWork('hybrid')}
-                />
-                <p className='qp-input-info'>Hybrid</p>
-              </div>
-            </div>
-            <p className='p-headers'> Did you have covid 19?</p>
-            <div className='qp-input-radio'>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value={true}
-                  defaultChecked={CheckerForCovid(true)}
-                  disabled={CheckerForCovid(true)}
-                />
-                <p className='qp-input-info'>Yes</p>
-              </div>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value={false}
-                  defaultChecked={CheckerForCovid(false)}
-                  disabled={CheckerForCovid(false)}
-                />
-                <p className='qp-input-info'>No</p>
-              </div>
-            </div>
-            <div className={dateCheck1 ? 'empty' : 'hide'}>
-              <p className='p-headers'> When did you have covid 19?</p>
-              <div className='qp-input-radio'>
-                <div>
-                  <input
-                    className='qp-input'
-                    type='date'
-                    value={DateChecker_1(hadcovidat)}
-                    disabled
-                  />
+                <p className='PSCI-p'>Covid Situation</p>
+                <p className='p-headers'> how would you prefer to work?</p>
+
+                <div className='qp-input-radio'>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value='from_office'
+                      defaultChecked={CheckerForWork('from_office')}
+                      disabled={CheckerForWork('from_office')}
+                    />
+                    <p className='qp-input-info'>From Sairme Office</p>
+                  </div>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value='from_home'
+                      defaultChecked={CheckerForWork('from_home')}
+                      disabled={CheckerForWork('from_home')}
+                    />
+                    <p className='qp-input-info'>From Home</p>
+                  </div>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value='hybrid'
+                      defaultChecked={CheckerForWork('hybrid')}
+                      disabled={CheckerForWork('hybrid')}
+                    />
+                    <p className='qp-input-info'>Hybrid</p>
+                  </div>
+                </div>
+                <p className='p-headers'> Did you have covid 19?</p>
+                <div className='qp-input-radio'>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value={true}
+                      defaultChecked={CheckerForCovid(true)}
+                      disabled={CheckerForCovid(true)}
+                    />
+                    <p className='qp-input-info'>Yes</p>
+                  </div>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value={false}
+                      defaultChecked={CheckerForCovid(false)}
+                      disabled={CheckerForCovid(false)}
+                    />
+                    <p className='qp-input-info'>No</p>
+                  </div>
+                </div>
+                <div className={dateCheck1 ? 'empty' : 'hide'}>
+                  <p className='p-headers'> When did you have covid 19?</p>
+                  <div className='qp-input-radio'>
+                    <div>
+                      <input
+                        className='qp-input'
+                        type='date'
+                        value={DateChecker_1(hadcovidat)}
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className='p-headers'>Have you been vaccinated?</p>
+                <div className='qp-input-radio'>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value={true}
+                      defaultChecked={CheckerForVaccine(true)}
+                      disabled={CheckerForVaccine(true)}
+                    />
+                    <p className='qp-input-info'>Yes</p>
+                  </div>
+                  <div className='qp-input-radio-box'>
+                    <input
+                      type='radio'
+                      value={false}
+                      defaultChecked={CheckerForVaccine(false)}
+                      disabled={CheckerForVaccine(false)}
+                    />
+                    <p className='qp-input-info'>No</p>
+                  </div>
+                </div>
+                <div className={dateCheck2 ? 'empty' : 'hide'}>
+                  <p className='p-headers'> When did you get covid vaccine?</p>
+                  <div className='qp-input-radio'>
+                    <div>
+                      <input
+                        className='qp-input'
+                        type='date'
+                        value={DateChecker_2(vaccinatedat)}
+                        disabled
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <p className='p-headers'>Have you been vaccinated?</p>
-            <div className='qp-input-radio'>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value={true}
-                  defaultChecked={CheckerForVaccine(true)}
-                  disabled={CheckerForVaccine(true)}
-                />
-                <p className='qp-input-info'>Yes</p>
-              </div>
-              <div className='qp-input-radio-box'>
-                <input
-                  type='radio'
-                  value={false}
-                  defaultChecked={CheckerForVaccine(false)}
-                  disabled={CheckerForVaccine(false)}
-                />
-                <p className='qp-input-info'>No</p>
-              </div>
-            </div>
-            <div className={dateCheck2 ? 'empty' : 'hide'}>
-              <p className='p-headers'> When did you get covid vaccine?</p>
-              <div className='qp-input-radio'>
-                <div>
-                  <input
-                    className='qp-input'
-                    type='date'
-                    value={DateChecker_2(vaccinatedat)}
-                    disabled
-                  />
+            <div className='right'>
+              <div className='box-a'>
+                <p className='PSCI-p'>Skillset</p>
+
+                <div className='boxing'>
+                  <div className='boxing-box'>
+                    {skills.map((skill) => {
+                      return <UserSkills key={skill.id} id={skill.id} />;
+                    })}
+                  </div>
+                  <div className='boxing-box2'>
+                    {skills.map((skill) => {
+                      return (
+                        <p className='boxing-fetch' key={skill.id}>
+                          Years of Experience: {skill.experience}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>

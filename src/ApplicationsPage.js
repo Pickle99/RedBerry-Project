@@ -15,7 +15,6 @@ const ApplicationsPage = () => {
       .then((res) => {
         console.log(res);
         setAppList(res.data);
-        console.log(appList, 'ap');
       })
       .catch((err) => {
         console.log(err);
@@ -42,6 +41,7 @@ const ApplicationsPage = () => {
             hadcovidat={app.had_covid_at}
             vaccinated={app.vaccinated}
             vaccinatedat={app.vaccinated_at}
+            skills={app.skills}
           />
         );
       })}
