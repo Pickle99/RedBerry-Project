@@ -202,10 +202,25 @@
 }
 
 .button-next {
-  padding: 10px;
+  padding-top: 3px;
+  font-size: 25px;
+  color: #fe3b1f;
+  border: none;
+  background-color: #ffffff;
 }
 .button-prev {
-  padding: 10px;
+  padding-top: 3px;
+  font-size: 25px;
+  color: #fe3b1f;
+  border: none;
+  background-color: #ffffff;
+}
+
+.button-prev:hover {
+  cursor: pointer;
+}
+.button-next:hover {
+  cursor: pointer;
 }
 
 .select-container {
@@ -385,4 +400,15 @@ textarea {
   font-size: 13px;
   line-height: 16px;
   color: #3a3a3a;
+}
+
+.circle {
+  background-color: #fe3b1f;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.circle-container {
+  padding: 10px;
 }

@@ -12,6 +12,7 @@ body {
   color: #ffffff;
   padding-top: 80px;
   padding-bottom: 20px;
+  padding-right: 310px;
 }
 
 .app-page-container {
@@ -26,7 +27,7 @@ nav {
   background: #fe3b1f;
   width: 1100px;
   line-height: 35px;
-  padding: 1px 1px;
+  padding: 10px 10px;
 }
 
 nav label {
@@ -36,11 +37,12 @@ nav label {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 12px;
   color: #ffffff;
 }
 
 .button span {
+  font-size: 23px;
   float: right;
   line-height: 35px;
   padding-right: 15px;

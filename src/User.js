@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import ApplicationsPage from './ApplicationsPage';
 import './AppsPage.css';
 import UserSkills from './UserSkills';
@@ -24,6 +24,8 @@ const User = ({
   const [phoneCheck, setPhoneCheck] = useState(false);
   const [dateCheck1, setDateCheck1] = useState(false);
   const [dateCheck2, setDateCheck2] = useState(false);
+
+  const [rotate, setRotate] = useState(false);
 
   function CheckerForWork(value) {
     if (value === workpref) {
@@ -81,13 +83,18 @@ const User = ({
     } else setPhoneCheck(false);
   }, []);
 
+  const labelClicker = () => {
+    setShowHide(!showHide);
+    setRotate(!rotate);
+  };
+
   return (
     <div className='div-cont'>
       <nav>
-        <label onClick={() => setShowHide(!showHide)} className='button'>
+        <label onClick={labelClicker} className='button'>
           {i + 1}
           <span>
-            <IoMdArrowDropdown />
+            {rotate ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
           </span>
         </label>
 

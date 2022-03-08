@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+
 const PageFiveEnd = ({
   formData,
   setFormData,
@@ -12,9 +13,15 @@ const PageFiveEnd = ({
   setHadCovidValue,
   setHadVaccineValue,
   setPhoneValue,
+  page,
 }) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    setPage(3);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +63,7 @@ const PageFiveEnd = ({
     setHadVaccinated('');
     setDevtalk('');
     setList([]);
-    setPage(0);
+    setPage(5);
     setHadCovidValue('');
     setHadVaccineValue('');
     setPhoneValue('');
@@ -65,6 +72,7 @@ const PageFiveEnd = ({
   return (
     <div>
       <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleBack}>Go back</button>
     </div>
   );
 };

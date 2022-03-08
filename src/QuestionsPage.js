@@ -5,7 +5,8 @@ import PageTwo from './Pages/PageTwo';
 import PageThree from './Pages/PageThree';
 import PageFour from './Pages/PageFour';
 import PageFiveEnd from './Pages/PageFiveEnd';
-
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import ThankPage from './Pages/ThankPage';
 const getLocalStoragePageOne = () => {
   let formData = localStorage.getItem('formData');
   if (formData) {
@@ -140,6 +141,41 @@ const QuestionsPage = () => {
     localStorage.setItem('formData', JSON.stringify(formData));
   }, [formData]);
 
+  const [opacityValue_1, setOpacityValue_1] = useState(0.1);
+  const [opacityValue_2, setOpacityValue_2] = useState(0.1);
+  const [opacityValue_3, setOpacityValue_3] = useState(0.1);
+  const [opacityValue_4, setOpacityValue_4] = useState(0.1);
+
+  useEffect(() => {
+    if (page == 5) {
+      return <ThankPage />;
+    } else return <ThankPage />;
+  }, []);
+
+  useEffect(() => {
+    if (page === 0) {
+      setOpacityValue_1(1);
+      setOpacityValue_2(0.1);
+      setOpacityValue_3(0.1);
+      setOpacityValue_4(0.1);
+    } else if (page === 1) {
+      setOpacityValue_1(1);
+      setOpacityValue_2(1);
+      setOpacityValue_3(0.1);
+      setOpacityValue_4(0.1);
+    } else if (page === 2) {
+      setOpacityValue_1(1);
+      setOpacityValue_2(1);
+      setOpacityValue_3(1);
+      setOpacityValue_4(0.1);
+    } else {
+      setOpacityValue_1(1);
+      setOpacityValue_2(1);
+      setOpacityValue_3(1);
+      setOpacityValue_4(1);
+    }
+  }, [page]);
+
   function InputDisplay() {
     if (page === 0) {
       return (
@@ -201,6 +237,7 @@ const QuestionsPage = () => {
           setHadCovidValue={setHadCovidValue}
           setHadVaccineValue={setHadVaccineValue}
           setPhoneValue={setPhoneValue}
+          page={page}
         />
       );
     }
@@ -220,17 +257,34 @@ const QuestionsPage = () => {
         <div className='qp-button-box'>
           <button
             className='button-prev'
-            disabled={page == 0}
             onClick={() => setPage((currPage) => currPage - 1)}
+            disabled={page == 0}
           >
-            prev
+            <IoIosArrowDropleft />
           </button>
+
+          <div className='circle-container'>
+            <div style={{ opacity: opacityValue_1 }} className='circle'></div>
+          </div>
+          <div className='circle-container'>
+            <div style={{ opacity: opacityValue_2 }} className='circle'></div>
+          </div>
+          <div className='circle-container'>
+            <div style={{ opacity: opacityValue_3 }} className='circle'></div>
+          </div>
+          <div className='circle-container'>
+            <div style={{ opacity: opacityValue_4 }} className='circle'></div>
+          </div>
+          <div className='circle-container'>
+            <div style={{ opacity: 0.1 }} className='circle'></div>
+          </div>
+
           <button
             className='button-next'
             disabled={page == pageTitlesLeftHeader.length}
             onClick={() => setPage((currPage) => currPage + 1)}
           >
-            next
+            <IoIosArrowDropright />
           </button>
         </div>
       </div>
