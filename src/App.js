@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import LandingPage from './LandingPage';
-import { Routes, Route } from 'react-router-dom';
-import QuestionsPage from './QuestionsPage';
 import './App.css';
-import { Context } from './context/Context';
+import LandingPage from './LandingPage';
+import QuestionsPage from './QuestionsPage';
+import ApplicationsPage from './ApplicationsPage';
 import {
   pageTitlesLeftHeader,
   pageTitlesRightInfo,
   pageTitlesRightHeader,
 } from './context/ContextExports';
+import { Routes, Route } from 'react-router-dom';
+import { Context } from './context/Context';
 
 const getLocalStorageForPage = () => {
   let page = localStorage.getItem('page');
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage />} />
           <Route path='survey' element={<QuestionsPage />} />
+          <Route path='submitted-applications' element={<ApplicationsPage />} />
         </Routes>
       </div>
     </Context.Provider>

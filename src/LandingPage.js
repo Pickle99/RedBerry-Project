@@ -9,6 +9,8 @@ const LandingPage = () => {
     navigate('/survey');
   };
 
+  const submittedApp = () => [navigate('/submitted-applications')];
+
   return (
     <div className='container'>
       <div className='container-box'>
@@ -20,7 +22,7 @@ const LandingPage = () => {
         </div>
         <div className='box-3'>
           <span>
-            <p>Submitted applications</p>
+            <p onClick={submittedApp}>Submitted applications</p>
           </span>
         </div>
         <img src={rocketman} alt='img' />

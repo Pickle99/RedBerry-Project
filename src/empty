@@ -1,0 +1,17 @@
+<div className='boxing'>
+              <p>First Name</p>
+              <p className='boxing-fetch'>{name}</p>
+            </div>
+
+            <div className='boxing'>
+              <p>Last Name</p> <p className='boxing-fetch'>{lastname}</p>
+            </div>
+
+            <div className='boxing'>
+              <p>E mail</p>
+              <p className='boxing-fetch'>{email}</p>
+            </div>
+
+            <div className='boxing'>
+              <p>Phone</p> <p className='boxing-fetch'>{phone}</p>
+            </div>

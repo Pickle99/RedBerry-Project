@@ -1,0 +1,132 @@
+body {
+  background-color: #201f1f;
+}
+
+.app-page-header {
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 56px;
+  line-height: 70px;
+  letter-spacing: 0.11em;
+  color: #ffffff;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.app-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fe3b1f;
+  width: 1000px;
+  line-height: 35px;
+  padding: 1px 1px;
+}
+
+nav label {
+  padding-left: 15px;
+  display: block;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.button span {
+  float: right;
+  line-height: 35px;
+  padding-right: 15px;
+}
+
+.div-cont {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  background: #ffffff;
+}
+
+.hide {
+  display: none;
+}
+
+.PSCI-p {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #fe3b1f;
+}
+
+.container-boxer {
+  padding: 30px 30px 100px 70px;
+}
+
+.PSCI-p p {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
+
+.boxing {
+  padding: 10px 0px 10px 0px;
+}
+
+.boxing {
+  display: flex;
+}
+
+.boxing-fetch {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #454545;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 100px;
+}
+
+.boxing-box {
+  padding-top: 10px;
+}
+
+.p-headers {
+  padding-top: 30px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.radio-inp {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
