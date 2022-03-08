@@ -5,7 +5,6 @@ import PageTwo from './Pages/PageTwo';
 import PageThree from './Pages/PageThree';
 import PageFour from './Pages/PageFour';
 import PageFiveEnd from './Pages/PageFiveEnd';
-import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 import ThankPage from './Pages/ThankPage';
 const getLocalStoragePageOne = () => {
   let formData = localStorage.getItem('formData');
@@ -129,13 +128,7 @@ const QuestionsPage = () => {
 
   const [phoneValue, setPhoneValue] = useState(getLocalStoragePageOne_2());
 
-  const {
-    page,
-    setPage,
-    pageTitlesLeftHeader,
-    pageTitlesRightHeader,
-    pageTitlesRightInfo,
-  } = useContext(Context);
+  const { page, setPage } = useContext(Context);
 
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));
@@ -145,12 +138,6 @@ const QuestionsPage = () => {
   const [opacityValue_2, setOpacityValue_2] = useState(0.1);
   const [opacityValue_3, setOpacityValue_3] = useState(0.1);
   const [opacityValue_4, setOpacityValue_4] = useState(0.1);
-
-  useEffect(() => {
-    if (page == 5) {
-      return <ThankPage />;
-    } else return <ThankPage />;
-  }, []);
 
   useEffect(() => {
     if (page === 0) {
@@ -184,6 +171,12 @@ const QuestionsPage = () => {
           setFormData={setFormData}
           phoneValue={phoneValue}
           setPhoneValue={setPhoneValue}
+          opacityValue_1={opacityValue_1}
+          opacityValue_2={opacityValue_2}
+          opacityValue_3={opacityValue_3}
+          opacityValue_4={opacityValue_4}
+          page={page}
+          setPage={setPage}
         />
       );
     } else if (page === 1) {
@@ -195,6 +188,12 @@ const QuestionsPage = () => {
           setSelectedExperience={setSelectedExperience}
           list={list}
           setList={setList}
+          opacityValue_1={opacityValue_1}
+          opacityValue_2={opacityValue_2}
+          opacityValue_3={opacityValue_3}
+          opacityValue_4={opacityValue_4}
+          page={page}
+          setPage={setPage}
         />
       );
     } else if (page === 2) {
@@ -212,6 +211,12 @@ const QuestionsPage = () => {
           setHadCovidValue={setHadCovidValue}
           setHadVaccineValue={setHadVaccineValue}
           hadVaccineValue={hadVaccineValue}
+          opacityValue_1={opacityValue_1}
+          opacityValue_2={opacityValue_2}
+          opacityValue_3={opacityValue_3}
+          opacityValue_4={opacityValue_4}
+          page={page}
+          setPage={setPage}
         />
       );
     } else if (page === 3) {
@@ -221,9 +226,15 @@ const QuestionsPage = () => {
           setFormData={setFormData}
           devtalk={devtalk}
           setDevtalk={setDevtalk}
+          opacityValue_1={opacityValue_1}
+          opacityValue_2={opacityValue_2}
+          opacityValue_3={opacityValue_3}
+          opacityValue_4={opacityValue_4}
+          page={page}
+          setPage={setPage}
         />
       );
-    } else {
+    } else if (page === 4) {
       return (
         <PageFiveEnd
           formData={formData}
@@ -243,64 +254,7 @@ const QuestionsPage = () => {
     }
   }
 
-  return (
-    <div className='qp-container'>
-      <div className='qp-left'>
-        <div className='qp-left-box'>
-          <div className='qp-left-header-box qp-left-header'>
-            {pageTitlesLeftHeader[page]}
-          </div>
-          <div className='qp-input-container'>
-            <form>{InputDisplay()}</form>
-          </div>
-        </div>
-        <div className='qp-button-box'>
-          <button
-            className='button-prev'
-            onClick={() => setPage((currPage) => currPage - 1)}
-            disabled={page == 0}
-          >
-            <IoIosArrowDropleft />
-          </button>
-
-          <div className='circle-container'>
-            <div style={{ opacity: opacityValue_1 }} className='circle'></div>
-          </div>
-          <div className='circle-container'>
-            <div style={{ opacity: opacityValue_2 }} className='circle'></div>
-          </div>
-          <div className='circle-container'>
-            <div style={{ opacity: opacityValue_3 }} className='circle'></div>
-          </div>
-          <div className='circle-container'>
-            <div style={{ opacity: opacityValue_4 }} className='circle'></div>
-          </div>
-          <div className='circle-container'>
-            <div style={{ opacity: 0.1 }} className='circle'></div>
-          </div>
-
-          <button
-            className='button-next'
-            disabled={page == pageTitlesLeftHeader.length}
-            onClick={() => setPage((currPage) => currPage + 1)}
-          >
-            <IoIosArrowDropright />
-          </button>
-        </div>
-      </div>
-
-      <div className='qp-right'>
-        <div className='qp-right-box'>
-          <div className='qp-box-1'>
-            <p className='qp-right-header'>{pageTitlesRightHeader[page]}</p>
-            <div className='qp-box-2'>
-              <p className='qp-right-text'>{pageTitlesRightInfo[page]}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return InputDisplay();
 };
 
 export default QuestionsPage;

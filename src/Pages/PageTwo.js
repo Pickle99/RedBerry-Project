@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListA from './ListA';
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 
 const PageTwo = ({
   formData,
@@ -9,6 +10,12 @@ const PageTwo = ({
   setSelectedExperience,
   list,
   setList,
+  opacityValue_1,
+  opacityValue_2,
+  opacityValue_3,
+  opacityValue_4,
+  page,
+  setPage,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
 
@@ -76,53 +83,118 @@ const PageTwo = ({
 
   return (
     <>
-      <div className='select-container  '>
-        <select
-          onChange={(event) => setSelectedSkill(+event.target.value)}
-          name='select'
-          defaultValue='default'
-        >
-          <option value='default' disabled hidden>
-            Skills
-          </option>
-          {skillsList.map((skill) => (
-            <option
-              hidden={list.find((item) => item.title === skill.title)}
-              value={skill.id}
-              key={skill.id}
-              disabled={list.find((item) => item.title === skill.title)}
+      <div className='qp-container'>
+        <div className='qp-left'>
+          <div className='qp-left-box'>
+            <div className='qp-left-header-box qp-left-header'>
+              Tell us about your skills
+            </div>
+            <div className='qp-input-container'>
+              <form>
+                <div className='select-container  '>
+                  <select
+                    onChange={(event) => setSelectedSkill(+event.target.value)}
+                    name='select'
+                    defaultValue='default'
+                  >
+                    <option value='default' disabled hidden>
+                      Skills
+                    </option>
+                    {skillsList.map((skill) => (
+                      <option
+                        hidden={list.find((item) => item.title === skill.title)}
+                        value={skill.id}
+                        key={skill.id}
+                        disabled={list.find(
+                          (item) => item.title === skill.title
+                        )}
+                      >
+                        {skill.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className='qp-input skill-item'>
+                  <input
+                    onChange={
+                      (event) =>
+                        setSelectedExperience(Number(event.target.value)) // same as on line 67 with plus, just to showcase
+                    }
+                    name='experience'
+                    value={selectedExperience}
+                    type='number'
+                    placeholder='Experience Duration in years'
+                  />
+                </div>
+
+                <div className='APL-button'>
+                  <button
+                    onClick={addHandleClick}
+                    disabled={!(selectedSkill && selectedExperience)}
+                  >
+                    Add Programming Language
+                  </button>
+                </div>
+                {list.length > 0 && (
+                  <div className='skill-container'>
+                    <ListA items={list} removeItem={removeItem} />
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
+          <div className='qp-button-box'>
+            <button
+              onClick={() => setPage((curr) => curr - 1)}
+              className='button-prev'
             >
-              {skill.title}
-            </option>
-          ))}
-        </select>
-      </div>
+              <IoIosArrowDropleft />
+            </button>
 
-      <div className='qp-input skill-item'>
-        <input
-          onChange={
-            (event) => setSelectedExperience(Number(event.target.value)) // same as on line 67 with plus, just to showcase
-          }
-          name='experience'
-          value={selectedExperience}
-          type='number'
-          placeholder='Experience Duration in years'
-        />
-      </div>
+            <div className='circle-container'>
+              <div style={{ opacity: opacityValue_1 }} className='circle'></div>
+            </div>
+            <div className='circle-container'>
+              <div style={{ opacity: opacityValue_2 }} className='circle'></div>
+            </div>
+            <div className='circle-container'>
+              <div style={{ opacity: opacityValue_3 }} className='circle'></div>
+            </div>
+            <div className='circle-container'>
+              <div style={{ opacity: opacityValue_4 }} className='circle'></div>
+            </div>
+            <div className='circle-container'>
+              <div style={{ opacity: 0.1 }} className='circle'></div>
+            </div>
 
-      <div className='APL-button'>
-        <button
-          onClick={addHandleClick}
-          disabled={!(selectedSkill && selectedExperience)}
-        >
-          Add Programming Language
-        </button>
-      </div>
-      {list.length > 0 && (
-        <div className='skill-container'>
-          <ListA items={list} removeItem={removeItem} />
+            <button
+              onClick={() => setPage((curr) => curr + 1)}
+              className='button-next'
+            >
+              <IoIosArrowDropright />
+            </button>
+          </div>
         </div>
-      )}
+
+        <div className='qp-right'>
+          <div className='qp-right-box'>
+            <div className='qp-box-1'>
+              <p className='qp-right-header'>A bit about our battles</p>
+              <div className='qp-box-2'>
+                <p className='qp-right-text'>
+                  As we said, Redberry has been on the field for quite some time
+                  now, and we have touched and embraced a variety of programming
+                  languages, technologies, philosophies, and frameworks. We are
+                  battle-tested in PHP Laravel Stack with Vue.js, refined in
+                  React, and allies with Serverside technologies like Docker and
+                  Kubernetes, and now we have set foot in the web3 industry.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

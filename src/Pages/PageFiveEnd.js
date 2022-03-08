@@ -13,7 +13,6 @@ const PageFiveEnd = ({
   setHadCovidValue,
   setHadVaccineValue,
   setPhoneValue,
-  page,
 }) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
@@ -63,16 +62,22 @@ const PageFiveEnd = ({
     setHadVaccinated('');
     setDevtalk('');
     setList([]);
-    setPage(5);
     setHadCovidValue('');
     setHadVaccineValue('');
     setPhoneValue('');
   };
 
   return (
-    <div>
-      <button onClick={handleSubmit}>Submit</button>
-      <button onClick={handleBack}>Go back</button>
+    <div className='final-page-buttons'>
+      <div className='fpb-box'>
+        <div className='fpb-box-submit'>
+          <button onClick={handleSubmit}>Submit</button>
+        </div>
+
+        <div className='fpb-box-back'>
+          <button onClick={handleBack}>Go back</button>
+        </div>
+      </div>
     </div>
   );
 };
