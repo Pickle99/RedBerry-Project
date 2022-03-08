@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdArrowDropdown } from 'react-icons/io';
+import ApplicationsPage from './ApplicationsPage';
 import './AppsPage.css';
 import UserSkills from './UserSkills';
 
@@ -14,6 +15,10 @@ const User = ({
   vaccinated,
   vaccinatedat,
   skills,
+  devtalks,
+  devtalktopic,
+  special,
+  i,
 }) => {
   const [showHide, setShowHide] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
@@ -34,6 +39,12 @@ const User = ({
 
   function CheckerForVaccine(value) {
     if (value === vaccinated) {
+      return true;
+    } else return false;
+  }
+
+  function CheckerForDevtalks(value) {
+    if (value === devtalks) {
       return true;
     } else return false;
   }
@@ -75,7 +86,7 @@ const User = ({
     <div className='div-cont'>
       <nav>
         <label onClick={() => setShowHide(!showHide)} className='button'>
-          1
+          {i + 1}
           <span>
             <IoMdArrowDropdown />
           </span>
@@ -224,6 +235,56 @@ const User = ({
                         </p>
                       );
                     })}
+                  </div>
+                </div>
+                <div className='box-insights'>
+                  <p className='PSCI-p'>Insights</p>
+                  <p className='p-headers'>
+                    Would you attend devtalks and maybe also organize your own?
+                  </p>
+                  <div className='qp-input-radio'>
+                    <div className='qp-input-radio-box'>
+                      <input
+                        type='radio'
+                        value={true}
+                        defaultChecked={CheckerForDevtalks(true)}
+                        disabled={CheckerForDevtalks(true)}
+                      />
+                      <p className='qp-input-info'>Yes</p>
+                    </div>
+                    <div className='qp-input-radio-box'>
+                      <input
+                        type='radio'
+                        value={false}
+                        defaultChecked={CheckerForDevtalks(false)}
+                        disabled={CheckerForDevtalks(false)}
+                      />
+                      <p className='qp-input-info'>No</p>
+                    </div>
+                  </div>
+                  <p className='p-headers'>
+                    What would you speak about at Devtalk?
+                  </p>
+                  <div className='devtalk-box'>
+                    <div className='qp-input-textarea'>
+                      <textarea
+                        cols='50'
+                        rows='4'
+                        value={devtalktopic}
+                        disabled
+                      ></textarea>
+                    </div>
+                  </div>
+                  <p className='p-headers'>Tell us something special</p>
+                  <div className='devtalk-box'>
+                    <div className='qp-input-textarea'>
+                      <textarea
+                        cols='50'
+                        rows='1'
+                        value={special}
+                        disabled
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
               </div>

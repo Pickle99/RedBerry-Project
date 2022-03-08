@@ -24,7 +24,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   background: #fe3b1f;
-  width: 1000px;
+  width: 1100px;
   line-height: 35px;
   padding: 1px 1px;
 }
@@ -139,8 +139,18 @@ nav label {
   display: flex;
   justify-content: end;
   align-items: start;
+  padding-left: 100px;
 }
 
 .container-boxer {
   display: flex;
+}
+
+.box-insights {
+  padding-top: 180px;
+}
+
+.devtalk-box {
+  padding-top: 30px;
+  padding-bottom: 50px;
 }

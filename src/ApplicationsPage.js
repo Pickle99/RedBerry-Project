@@ -28,10 +28,11 @@ const ApplicationsPage = () => {
           <p>Submitted Applications</p>
         </header>
       </div>
-      {appList.map((app) => {
+      {appList.map((app, i) => {
         return (
           <User
             key={Math.random()}
+            i={i}
             name={app.first_name}
             lastname={app.last_name}
             email={app.email}
@@ -42,6 +43,9 @@ const ApplicationsPage = () => {
             vaccinated={app.vaccinated}
             vaccinatedat={app.vaccinated_at}
             skills={app.skills}
+            devtalks={app.will_organize_devtalk}
+            devtalktopic={app.devtalk_topic}
+            special={app.something_special}
           />
         );
       })}
