@@ -13,6 +13,7 @@ const PageFive = ({
   setHadCovidValue,
   setHadVaccineValue,
   setPhoneValue,
+  setSelectedExperience,
 }) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
@@ -46,7 +47,7 @@ const PageFive = ({
       first_name: '',
       last_name: '',
       email: '',
-      phone: '',
+      phone: String,
       skills: [],
       work_preference: '',
       had_covid: '',
@@ -65,6 +66,7 @@ const PageFive = ({
     setHadCovidValue('');
     setHadVaccineValue('');
     setPhoneValue('');
+    setSelectedExperience('');
     setPage(5);
   };
 

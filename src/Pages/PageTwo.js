@@ -74,6 +74,11 @@ const PageTwo = ({
   }, [list]);
 
   useEffect(() => {
+    localStorage.setItem(
+      'selectedExperience',
+      JSON.stringify(selectedExperience)
+    );
+
     if (selectedExperience === 0) {
       return setSelectedExperience('');
     }

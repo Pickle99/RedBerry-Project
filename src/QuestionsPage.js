@@ -6,110 +6,24 @@ import PageThree from './Pages/PageThree';
 import PageFour from './Pages/PageFour';
 import PageFive from './Pages/PageFive';
 import ThankPage from './Pages/ThankPage';
-const getLocalStoragePageOne = () => {
-  let formData = localStorage.getItem('formData');
-  if (formData) {
-    return JSON.parse(localStorage.getItem('formData'));
-  } else {
-    return {
-      first_name: '',
-      last_name: '',
-      email: '',
-      phone: String,
-      skills: [],
-      work_preference: '',
-      had_covid: '',
-      had_covid_at: Date,
-      vaccinated: '',
-      vaccinated_at: Date,
-      will_organize_devtalk: '',
-      devtalk_topic: '',
-      something_special: '',
-    };
-  }
-};
-
-const getLocalStoragePageOne_2 = () => {
-  let phoneValue = localStorage.getItem('phoneValue');
-
-  if (phoneValue) {
-    return JSON.parse(localStorage.getItem('phoneValue'));
-  } else return String;
-};
-
-const getLocalStoragePageTwo = () => {
-  let list = localStorage.getItem('list');
-
-  if (list) {
-    return JSON.parse(localStorage.getItem('list'));
-  } else {
-    return [];
-  }
-};
-
-const getLocalStoragePageThree_1 = () => {
-  let hadCovid = localStorage.getItem('hadCovid');
-
-  if (hadCovid) {
-    return JSON.parse(localStorage.getItem('hadCovid'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageThree_2 = () => {
-  let hadVaccinated = localStorage.getItem('hadVaccinated');
-
-  if (hadVaccinated) {
-    return JSON.parse(localStorage.getItem('hadVaccinated'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageThree_3 = () => {
-  let workPreference = localStorage.getItem('workPreference');
-
-  if (workPreference) {
-    return JSON.parse(localStorage.getItem('workPreference'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageThree_4 = () => {
-  let hadCovidValue = localStorage.getItem('hadCovidValue');
-
-  if (hadCovidValue) {
-    return JSON.parse(localStorage.getItem('hadCovidValue'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageThree_5 = () => {
-  let hadVaccineValue = localStorage.getItem('hadVaccineValue');
-
-  if (hadVaccineValue) {
-    return JSON.parse(localStorage.getItem('hadVaccineValue'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageFour = () => {
-  let devtalk = localStorage.getItem('devtalk');
-
-  if (devtalk) {
-    return JSON.parse(localStorage.getItem('devtalk'));
-  } else {
-    return '';
-  }
-};
+import {
+  getLocalStoragePageOne,
+  getLocalStoragePageOne_2,
+  getLocalStoragePageTwo,
+  getLocalStoragePageTwo_2,
+  getLocalStoragePageThree_1,
+  getLocalStoragePageThree_2,
+  getLocalStoragePageThree_3,
+  getLocalStoragePageThree_4,
+  getLocalStoragePageThree_5,
+  getLocalStoragePageFour,
+} from './Storage';
 
 const QuestionsPage = () => {
   let [formData, setFormData] = useState(getLocalStoragePageOne());
-  const [selectedExperience, setSelectedExperience] = useState('');
+  const [selectedExperience, setSelectedExperience] = useState(
+    getLocalStoragePageTwo_2()
+  );
   const [workPreference, setWorkPreference] = useState(
     getLocalStoragePageThree_3()
   );
@@ -125,19 +39,17 @@ const QuestionsPage = () => {
   const [hadVaccineValue, setHadVaccineValue] = useState(
     getLocalStoragePageThree_5()
   );
-
   const [phoneValue, setPhoneValue] = useState(getLocalStoragePageOne_2());
 
   const { page, setPage } = useContext(Context);
-
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData));
-  }, [formData]);
-
   const [opacityValue_1, setOpacityValue_1] = useState(0.1);
   const [opacityValue_2, setOpacityValue_2] = useState(0.1);
   const [opacityValue_3, setOpacityValue_3] = useState(0.1);
   const [opacityValue_4, setOpacityValue_4] = useState(0.1);
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
 
   useEffect(() => {
     if (page === 0) {
@@ -249,6 +161,7 @@ const QuestionsPage = () => {
           setHadVaccineValue={setHadVaccineValue}
           setPhoneValue={setPhoneValue}
           page={page}
+          setSelectedExperience={setSelectedExperience}
         />
       );
     } else if (page === 5) {

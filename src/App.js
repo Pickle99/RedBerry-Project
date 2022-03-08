@@ -3,11 +3,6 @@ import './App.css';
 import LandingPage from './LandingPage';
 import QuestionsPage from './QuestionsPage';
 import ApplicationsPage from './ApplicationsPage';
-import {
-  pageTitlesLeftHeader,
-  pageTitlesRightInfo,
-  pageTitlesRightHeader,
-} from './context/ContextExports';
 import { Routes, Route } from 'react-router-dom';
 import { Context } from './context/Context';
 
@@ -31,9 +26,6 @@ function App() {
   return (
     <Context.Provider
       value={{
-        pageTitlesLeftHeader,
-        pageTitlesRightInfo,
-        pageTitlesRightHeader,
         page,
         setPage,
       }}
