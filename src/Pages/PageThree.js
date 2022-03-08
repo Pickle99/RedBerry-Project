@@ -1,25 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-const getLocalStoragePageThree_4 = () => {
-  let hadCovidValue = localStorage.getItem('hadCovidValue');
-
-  if (hadCovidValue) {
-    return JSON.parse(localStorage.getItem('hadCovidValue'));
-  } else {
-    return '';
-  }
-};
-
-const getLocalStoragePageThree_5 = () => {
-  let hadVaccineValue = localStorage.getItem('hadVaccineValue');
-
-  if (hadVaccineValue) {
-    return JSON.parse(localStorage.getItem('hadVaccineValue'));
-  } else {
-    return '';
-  }
-};
-
 const PageThree = ({
   formData,
   setFormData,
@@ -29,14 +9,11 @@ const PageThree = ({
   setHadCovid,
   hadVaccinated,
   setHadVaccinated,
+  hadVaccineValue,
+  hadCovidValue,
+  setHadVaccineValue,
+  setHadCovidValue,
 }) => {
-  const [hadCovidValue, setHadCovidValue] = useState(
-    getLocalStoragePageThree_4()
-  );
-  const [hadVaccineValue, setHadVaccineValue] = useState(
-    getLocalStoragePageThree_5()
-  );
-
   const [checkedValuesWork, setCheckedValuesWork] = useState({
     workPreferenceYes1: false,
     workPreferenceNo1: false,
@@ -147,12 +124,21 @@ const PageThree = ({
 
   useEffect(() => {
     localStorage.setItem('hadCovidValue', JSON.stringify(hadCovidValue));
-    setFormData({ ...formData, had_covid_at: hadCovidValue });
+    if (hadCovidValue) {
+      setFormData({ ...formData, had_covid_at: hadCovidValue });
+    } else {
+      setFormData({ ...formData, had_covid_at: Date });
+    }
   }, [hadCovidValue]);
 
   useEffect(() => {
     localStorage.setItem('hadVaccineValue', JSON.stringify(hadVaccineValue));
-    setFormData({ ...formData, vaccinated_at: hadVaccineValue });
+
+    if (hadVaccineValue) {
+      setFormData({ ...formData, vaccinated_at: hadVaccineValue });
+    } else {
+      setFormData({ ...formData, vaccinated_at: Date });
+    }
   }, [hadVaccineValue]);
 
   return (

@@ -14,7 +14,7 @@ const User = ({
   vaccinatedat,
 }) => {
   const [showHide, setShowHide] = useState(false);
-
+  const [phoneCheck, setPhoneCheck] = useState(false);
   const [dateCheck1, setDateCheck1] = useState(false);
   const [dateCheck2, setDateCheck2] = useState(false);
 
@@ -61,7 +61,12 @@ const User = ({
     if (DateChecker_1(hadcovidat)) {
       setDateCheck1(true);
     } else setDateCheck1(false);
-    console.log(dateCheck1);
+  }, [showHide]);
+
+  useEffect(() => {
+    if (phone) {
+      setPhoneCheck(true);
+    } else setPhoneCheck(false);
   }, [showHide]);
 
   return (
@@ -83,7 +88,7 @@ const User = ({
                 <p>First Name</p>
                 <p>Last Name</p>
                 <p>Email</p>
-                <p>Phone</p>
+                <p className={phoneCheck ? 'empty' : 'hide'}>Phone</p>
               </div>
               <div className='boxing-box2'>
                 <p className='boxing-fetch'>{name}</p>

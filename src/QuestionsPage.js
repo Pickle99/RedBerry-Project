@@ -15,7 +15,7 @@ const getLocalStoragePageOne = () => {
       first_name: '',
       last_name: '',
       email: '',
-      phone: '',
+      phone: String,
       skills: [],
       work_preference: '',
       had_covid: '',
@@ -27,6 +27,14 @@ const getLocalStoragePageOne = () => {
       something_special: '',
     };
   }
+};
+
+const getLocalStoragePageOne_2 = () => {
+  let phoneValue = localStorage.getItem('phoneValue');
+
+  if (phoneValue) {
+    return JSON.parse(localStorage.getItem('phoneValue'));
+  } else return String;
 };
 
 const getLocalStoragePageTwo = () => {
@@ -69,6 +77,26 @@ const getLocalStoragePageThree_3 = () => {
   }
 };
 
+const getLocalStoragePageThree_4 = () => {
+  let hadCovidValue = localStorage.getItem('hadCovidValue');
+
+  if (hadCovidValue) {
+    return JSON.parse(localStorage.getItem('hadCovidValue'));
+  } else {
+    return '';
+  }
+};
+
+const getLocalStoragePageThree_5 = () => {
+  let hadVaccineValue = localStorage.getItem('hadVaccineValue');
+
+  if (hadVaccineValue) {
+    return JSON.parse(localStorage.getItem('hadVaccineValue'));
+  } else {
+    return '';
+  }
+};
+
 const getLocalStoragePageFour = () => {
   let devtalk = localStorage.getItem('devtalk');
 
@@ -91,6 +119,14 @@ const QuestionsPage = () => {
   );
   const [devtalk, setDevtalk] = useState(getLocalStoragePageFour());
   const [list, setList] = useState(getLocalStoragePageTwo());
+  const [hadCovidValue, setHadCovidValue] = useState(
+    getLocalStoragePageThree_4()
+  );
+  const [hadVaccineValue, setHadVaccineValue] = useState(
+    getLocalStoragePageThree_5()
+  );
+
+  const [phoneValue, setPhoneValue] = useState(getLocalStoragePageOne_2());
 
   const {
     page,
@@ -106,7 +142,14 @@ const QuestionsPage = () => {
 
   function InputDisplay() {
     if (page === 0) {
-      return <PageOne formData={formData} setFormData={setFormData} />;
+      return (
+        <PageOne
+          formData={formData}
+          setFormData={setFormData}
+          phoneValue={phoneValue}
+          setPhoneValue={setPhoneValue}
+        />
+      );
     } else if (page === 1) {
       return (
         <PageTwo
@@ -129,6 +172,10 @@ const QuestionsPage = () => {
           setHadCovid={setHadCovid}
           hadVaccinated={hadVaccinated}
           setHadVaccinated={setHadVaccinated}
+          hadCovidValue={hadCovidValue}
+          setHadCovidValue={setHadCovidValue}
+          setHadVaccineValue={setHadVaccineValue}
+          hadVaccineValue={hadVaccineValue}
         />
       );
     } else if (page === 3) {
@@ -151,6 +198,9 @@ const QuestionsPage = () => {
           setDevtalk={setDevtalk}
           setList={setList}
           setPage={setPage}
+          setHadCovidValue={setHadCovidValue}
+          setHadVaccineValue={setHadVaccineValue}
+          setPhoneValue={setPhoneValue}
         />
       );
     }

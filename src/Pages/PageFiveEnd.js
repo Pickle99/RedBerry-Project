@@ -9,6 +9,9 @@ const PageFiveEnd = ({
   setDevtalk,
   setList,
   setPage,
+  setHadCovidValue,
+  setHadVaccineValue,
+  setPhoneValue,
 }) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
@@ -17,7 +20,6 @@ const PageFiveEnd = ({
     e.preventDefault();
 
     console.log(formData);
-
     axios.post(url, {
       token: token,
       first_name: formData.first_name,
@@ -55,6 +57,9 @@ const PageFiveEnd = ({
     setDevtalk('');
     setList([]);
     setPage(0);
+    setHadCovidValue('');
+    setHadVaccineValue('');
+    setPhoneValue('');
   };
 
   return (

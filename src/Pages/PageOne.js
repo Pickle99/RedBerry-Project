@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 
-const PageOne = ({ formData, setFormData }) => {
+const PageOne = ({ formData, setFormData, phoneValue, setPhoneValue }) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   const geoNumberRegex = /(((\+){1}995){1})? ?-?[56789]{1}[0-9]{9}$/gm;
+
+  useEffect(() => {
+    localStorage.setItem('phoneValue', JSON.stringify(phoneValue));
+    if (phoneValue) {
+      return setFormData({ ...formData, phone: phoneValue });
+    } else return setFormData({ ...formData, phone: String });
+  }, [phoneValue]);
 
   return (
     <>
@@ -46,10 +53,8 @@ const PageOne = ({ formData, setFormData }) => {
         <input
           type='text'
           placeholder='+995 5__ __ __ __'
-          value={formData.phone}
-          onChange={(event) =>
-            setFormData({ ...formData, phone: event.target.value })
-          }
+          value={phoneValue}
+          onChange={(event) => setPhoneValue(event.target.value)}
         />
       </div>
     </>
