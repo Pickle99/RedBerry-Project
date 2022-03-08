@@ -67,20 +67,19 @@ const User = ({
     if (DateChecker_2(vaccinatedat)) {
       setDateCheck2(true);
     } else setDateCheck2(false);
-    console.log(dateCheck2);
-  }, [showHide]);
+  }, []);
 
   useEffect(() => {
     if (DateChecker_1(hadcovidat)) {
       setDateCheck1(true);
     } else setDateCheck1(false);
-  }, [showHide]);
+  }, []);
 
   useEffect(() => {
     if (phone) {
       setPhoneCheck(true);
     } else setPhoneCheck(false);
-  }, [showHide]);
+  }, []);
 
   return (
     <div className='div-cont'>
@@ -98,7 +97,6 @@ const User = ({
               <div className='container-boxer-2'>
                 <div className='box-a'>
                   <p className='PSCI-p'>User info</p>
-
                   <div className='boxing'>
                     <div className='boxing-box'>
                       <p>First Name</p>
@@ -124,7 +122,7 @@ const User = ({
                       type='radio'
                       value='from_office'
                       defaultChecked={CheckerForWork('from_office')}
-                      disabled={CheckerForWork('from_office')}
+                      disabled
                     />
                     <p className='qp-input-info'>From Sairme Office</p>
                   </div>
@@ -133,7 +131,7 @@ const User = ({
                       type='radio'
                       value='from_home'
                       defaultChecked={CheckerForWork('from_home')}
-                      disabled={CheckerForWork('from_home')}
+                      disabled
                     />
                     <p className='qp-input-info'>From Home</p>
                   </div>
@@ -142,7 +140,7 @@ const User = ({
                       type='radio'
                       value='hybrid'
                       defaultChecked={CheckerForWork('hybrid')}
-                      disabled={CheckerForWork('hybrid')}
+                      disabled
                     />
                     <p className='qp-input-info'>Hybrid</p>
                   </div>
@@ -154,7 +152,7 @@ const User = ({
                       type='radio'
                       value={true}
                       defaultChecked={CheckerForCovid(true)}
-                      disabled={CheckerForCovid(true)}
+                      disabled
                     />
                     <p className='qp-input-info'>Yes</p>
                   </div>
@@ -163,7 +161,7 @@ const User = ({
                       type='radio'
                       value={false}
                       defaultChecked={CheckerForCovid(false)}
-                      disabled={CheckerForCovid(false)}
+                      disabled
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
@@ -188,7 +186,7 @@ const User = ({
                       type='radio'
                       value={true}
                       defaultChecked={CheckerForVaccine(true)}
-                      disabled={CheckerForVaccine(true)}
+                      disabled
                     />
                     <p className='qp-input-info'>Yes</p>
                   </div>
@@ -197,7 +195,7 @@ const User = ({
                       type='radio'
                       value={false}
                       defaultChecked={CheckerForVaccine(false)}
-                      disabled={CheckerForVaccine(false)}
+                      disabled
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
@@ -248,7 +246,7 @@ const User = ({
                         type='radio'
                         value={true}
                         defaultChecked={CheckerForDevtalks(true)}
-                        disabled={CheckerForDevtalks(true)}
+                        disabled
                       />
                       <p className='qp-input-info'>Yes</p>
                     </div>
@@ -257,7 +255,7 @@ const User = ({
                         type='radio'
                         value={false}
                         defaultChecked={CheckerForDevtalks(false)}
-                        disabled={CheckerForDevtalks(false)}
+                        disabled
                       />
                       <p className='qp-input-info'>No</p>
                     </div>
