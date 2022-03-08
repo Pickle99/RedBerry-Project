@@ -410,6 +410,10 @@ textarea {
   border-radius: 50%;
 }
 
+.circle:hover {
+  cursor: pointer;
+}
+
 .circle-container {
   padding: 10px;
 }

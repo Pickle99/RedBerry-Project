@@ -124,19 +124,39 @@ const PageThree = ({
             </button>
 
             <div className='circle-container'>
-              <div style={{ opacity: opacityValue_1 }} className='circle'></div>
+              <div
+                onClick={() => setPage(0)}
+                style={{ opacity: opacityValue_1 }}
+                className='circle'
+              ></div>
             </div>
             <div className='circle-container'>
-              <div style={{ opacity: opacityValue_2 }} className='circle'></div>
+              <div
+                onClick={() => setPage(1)}
+                style={{ opacity: opacityValue_2 }}
+                className='circle'
+              ></div>
             </div>
             <div className='circle-container'>
-              <div style={{ opacity: opacityValue_3 }} className='circle'></div>
+              <div
+                onClick={() => setPage(2)}
+                style={{ opacity: opacityValue_3 }}
+                className='circle'
+              ></div>
             </div>
             <div className='circle-container'>
-              <div style={{ opacity: opacityValue_4 }} className='circle'></div>
+              <div
+                onClick={() => setPage(3)}
+                style={{ opacity: opacityValue_4 }}
+                className='circle'
+              ></div>
             </div>
             <div className='circle-container'>
-              <div style={{ opacity: 0.1 }} className='circle'></div>
+              <div
+                onClick={() => setPage(4)}
+                style={{ opacity: 0.1 }}
+                className='circle'
+              ></div>
             </div>
 
             <button
