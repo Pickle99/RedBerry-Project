@@ -23,9 +23,13 @@ const PageOne = ({
     const errors = {};
     if (!values.first_name) {
       errors.first_name = 'First name is required';
+    } else if (values.first_name.length < 2) {
+      errors.first_name = 'First name can contain at least 2 letters';
     }
     if (!values.last_name) {
       errors.last_name = 'Last name is required';
+    } else if (values.last_name.length < 2) {
+      errors.last_name = 'Last name can contain at least 2 letters';
     }
     if (!values.email) {
       errors.email = 'Email is required';
@@ -35,8 +39,10 @@ const PageOne = ({
     if (!geoNumberRegex.test(values.phone) && values.phone.length > 0) {
       errors.phone =
         'Phone number format is not valid for Georgia (ex:+9955..)';
-    }
-    if (values.phone.length > 13) {
+    } else if (values.phone.length > 0 && values.phone.length < 13) {
+      errors.phone =
+        'Georgian number can not be less than 12 and more than 13 characters long';
+    } else if (values.phone.length > 13) {
       errors.phone = 'Too much numbers for Georgian number';
     }
 
