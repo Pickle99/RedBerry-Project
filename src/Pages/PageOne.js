@@ -62,6 +62,12 @@ const PageOne = ({
     } else return setFormData({ ...formData, phone: '' });
   }, [phoneValue]);
 
+  useEffect(() => {
+    if (isSubmit) {
+      return setPage((curr) => curr + 1);
+    } else return setIsSubmit(false);
+  }, [isSubmit]);
+
   const handleNext = () => {
     setFormErrors(validate(formData));
   };
@@ -77,12 +83,6 @@ const PageOne = ({
       return true;
     } else return false;
   };
-
-  useEffect(() => {
-    if (isSubmit) {
-      return setPage((curr) => curr + 1);
-    } else return setIsSubmit(false);
-  }, [isSubmit]);
 
   return (
     <>

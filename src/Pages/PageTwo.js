@@ -85,13 +85,12 @@ const PageTwo = ({
     e.preventDefault();
     setIsSubmit(true);
     setIsSubmitThree(false);
-    const [selectedSkillFilter] = skillsList.filter(
-      (skill) => skill.id == selectedSkill
-    );
-
     setSelectedSkill('');
     setSelectedExperience('');
     setFormErrors(validate());
+    const [selectedSkillFilter] = skillsList.filter(
+      (skill) => skill.id == selectedSkill
+    );
     const newItem = {
       id: selectedSkill,
       title: selectedSkillFilter.title,

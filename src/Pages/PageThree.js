@@ -314,9 +314,7 @@ const PageThree = ({
                       />
                     </div>
                     <div className='error'>
-                      <p className='selectedError' className='formErrors'>
-                        {formErrors.had_covid_at}
-                      </p>
+                      <p className='formErrors'>{formErrors.had_covid_at}</p>
                     </div>
                   </div>
                 </div>
