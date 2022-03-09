@@ -166,7 +166,9 @@ const PageTwo = ({
                     ))}
                   </select>
                 </div>
-                {formErrors.selectedSkill}
+                <div className='error'>
+                  <p className='formErrors'>{formErrors.selectedSkill}</p>
+                </div>
                 <div className='qp-input skill-item'>
                   <input
                     onChange={
@@ -179,7 +181,7 @@ const PageTwo = ({
                     placeholder='Experience Duration in years'
                   />
                 </div>
-                <p>{formErrors.selectedExperience}</p>
+                <p className='formErrors'>{formErrors.selectedExperience}</p>
                 <div className='APL-button'>
                   <button
                     disabled={!(selectedSkill && selectedExperience)}

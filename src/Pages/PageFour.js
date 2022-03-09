@@ -144,7 +144,9 @@ const PageThree = ({
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
-                  <p>{formErrors.will_organize_devtalk}</p>
+                  <p className='formErrors'>
+                    {formErrors.will_organize_devtalk}
+                  </p>
                 </div>
 
                 <div className={devtalk ? 'empty' : 'hide'}>
@@ -163,7 +165,7 @@ const PageThree = ({
                         }
                       ></textarea>
                     </div>
-                    <p>{formErrors.devtalk_topic}</p>
+                    <p className='formErrors'>{formErrors.devtalk_topic}</p>
                   </div>
                 </div>
 
@@ -183,7 +185,7 @@ const PageThree = ({
                       }
                     ></textarea>
                   </div>
-                  <p>{formErrors.something_special}</p>
+                  <p className='formErrors'>{formErrors.something_special}</p>
                 </div>
               </form>
             </div>
@@ -225,11 +227,7 @@ const PageThree = ({
               ></div>
             </div>
             <div className='circle-container'>
-              <div
-                onClick={() => setPage(4)}
-                style={{ opacity: 0.1 }}
-                className='circle'
-              ></div>
+              <div style={{ opacity: 0.1 }} className='circle'></div>
             </div>
 
             <button onClick={handleNext} className='button-next'>

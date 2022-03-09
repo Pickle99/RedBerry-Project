@@ -57,14 +57,14 @@ const PageThree = ({
       errors.vaccinated = 'Please choose at least one answer';
     }
     if (!isSubmitCovid) {
-      if (values.had_covid_at == Date) {
+      if (values.had_covid_at == undefined) {
         errors.had_covid_at = 'This date field is required!';
       } else if (isSubmitCovid) {
         return '';
       }
     }
     if (!isSubmitVaccine) {
-      if (values.vaccinated_at == Date) {
+      if (values.vaccinated_at == undefined) {
         errors.vaccinated_at = 'This date field is required!';
       } else if (isSubmitVaccine) {
         return '';
@@ -74,7 +74,6 @@ const PageThree = ({
   };
 
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0) {
       setIsSubmit(true);
     }
@@ -270,7 +269,7 @@ const PageThree = ({
                     />
                     <p className='qp-input-info'>Hybrid</p>
                   </div>
-                  <p>{formErrors.work_preference}</p>
+                  <p className='formErrors'>{formErrors.work_preference}</p>
                 </div>
 
                 <p className='qp-input-headers'>
@@ -300,7 +299,7 @@ const PageThree = ({
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
-                  <p>{formErrors.had_covid}</p>
+                  <p className='formErrors'>{formErrors.had_covid}</p>
                 </div>
                 <div className={hadCovid ? 'empty' : 'hide'}>
                   <p className='qp-input-info'>When?</p>
@@ -314,10 +313,14 @@ const PageThree = ({
                         onChange={(e) => setHadCovidValue(e.target.value)}
                       />
                     </div>
+                    <div className='error'>
+                      <p className='selectedError' className='formErrors'>
+                        {formErrors.had_covid_at}
+                      </p>
+                    </div>
                   </div>
-                  <p>{formErrors.had_covid_at}</p>
                 </div>
-                <div></div>
+
                 <p className='qp-input-headers'>Have you been vaccinated?</p>
                 <div className='qp-input-radio'>
                   <div className='qp-input-radio-box'>
@@ -343,7 +346,7 @@ const PageThree = ({
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
-                  <p>{formErrors.vaccinated}</p>
+                  <p className='formErrors'>{formErrors.vaccinated}</p>
                 </div>
                 <div className={hadVaccinated ? 'empty' : 'hide'}>
                   <p className='qp-input-headers'>
@@ -359,7 +362,9 @@ const PageThree = ({
                         onChange={(e) => setHadVaccineValue(e.target.value)}
                       />
                     </div>
-                    <p>{formErrors.vaccinated_at}</p>
+                    <div className='error'>
+                      <p className='formErrors'>{formErrors.vaccinated_at}</p>
+                    </div>
                   </div>
                 </div>
                 <div></div>
@@ -375,39 +380,33 @@ const PageThree = ({
             </button>
 
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(0)}
                 style={{ opacity: opacityValue_1 }}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(1)}
                 style={{ opacity: opacityValue_2 }}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
-                onClick={() => setPage(2)}
+              <button
                 style={{ opacity: opacityValue_3 }}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
-                onClick={() => setPage(3)}
+              <button
                 style={{ opacity: opacityValue_4 }}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
-                onClick={() => setPage(4)}
-                style={{ opacity: 0.1 }}
-                className='circle'
-              ></div>
+              <button style={{ opacity: 0.1 }} className='circle'></button>
             </div>
 
             <button onClick={handleNext} className='button-next'>

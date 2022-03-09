@@ -100,7 +100,7 @@ const PageOne = ({
                   />
                 </div>
                 <div>
-                  <p>{formErrors.first_name}</p>
+                  <p className='formErrors'>{formErrors.first_name}</p>
                 </div>
                 <div className='qp-input skill-item'>
                   <input
@@ -117,7 +117,7 @@ const PageOne = ({
                   />
                 </div>
                 <div>
-                  <p>{formErrors.last_name}</p>
+                  <p className='formErrors'>{formErrors.last_name}</p>
                 </div>
                 <div className='qp-input skill-item'>
                   <input
@@ -130,7 +130,7 @@ const PageOne = ({
                   />
                 </div>
                 <div>
-                  <p>{formErrors.email}</p>
+                  <p className='formErrors'>{formErrors.email}</p>
                 </div>
                 <div className='qp-input skill-item'>
                   <input
@@ -140,7 +140,7 @@ const PageOne = ({
                     onChange={(event) => setPhoneValue(event.target.value)}
                   />
                 </div>
-                <p>{formErrors.phone}</p>
+                <p className='formErrors'>{formErrors.phone}</p>
               </form>
             </div>
           </div>

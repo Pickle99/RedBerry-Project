@@ -495,3 +495,12 @@ textarea {
 
   color: #fe3b1f;
 }
+
+.formErrors {
+  padding-left: 20px;
+  color: #eb3535;
+}
+
+.error {
+  padding-top: 20px;
+}
