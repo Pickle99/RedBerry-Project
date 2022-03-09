@@ -18,6 +18,10 @@ const PageThree = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
+  isSubmitCovid,
+  setIsSubmitCovid,
+  isSubmitVaccine,
+  setIsSubmitVaccine,
   setPage,
 }) => {
   const [checkedValuesWork, setCheckedValuesWork] = useState({
@@ -34,6 +38,65 @@ const PageThree = ({
     yes: false,
     no: false,
   });
+
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const [formErrors, setFormErrors] = useState([]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.work_preference) {
+      errors.work_preference = 'Please choose at least one answer';
+    }
+
+    if (values.had_covid === '') {
+      errors.had_covid = 'Please choose at least one answer';
+    }
+    if (values.vaccinated === '') {
+      errors.vaccinated = 'Please choose at least one answer';
+    }
+    if (!isSubmitCovid) {
+      if (values.had_covid_at == Date) {
+        errors.had_covid_at = 'This date field is required!';
+      } else if (isSubmitCovid) {
+        return '';
+      }
+    }
+    if (!isSubmitVaccine) {
+      if (values.vaccinated_at == Date) {
+        errors.vaccinated_at = 'This date field is required!';
+      } else if (isSubmitVaccine) {
+        return '';
+      }
+    }
+    return errors;
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0) {
+      setIsSubmit(true);
+    }
+  }, [formErrors]);
+
+  const handleNext = () => {
+    setFormErrors(validate(formData));
+  };
+
+  useEffect(() => {
+    if (isSubmit) {
+      return setPage((curr) => curr + 1);
+    } else return setIsSubmit(false);
+  }, [isSubmit]);
+
+  useEffect(() => {
+    localStorage.setItem('isSubmitCovid', JSON.stringify(isSubmitCovid));
+  }, [isSubmitCovid]);
+
+  useEffect(() => {
+    localStorage.setItem('isSubmitVaccine', JSON.stringify(isSubmitVaccine));
+  }, [isSubmitVaccine]);
 
   useEffect(() => {
     localStorage.setItem('workPreference', JSON.stringify(workPreference));
@@ -147,6 +210,24 @@ const PageThree = ({
     }
   }, [hadVaccineValue]);
 
+  const handleYesCovid = () => {
+    setIsSubmitCovid(false);
+  };
+
+  const handleNoCovid = () => {
+    setFormData({ ...formData, had_covid_at: Date });
+    setIsSubmitCovid(true);
+  };
+
+  const handleYesVaccine = () => {
+    setIsSubmitVaccine(false);
+  };
+
+  const handleNoVaccine = () => {
+    setFormData({ ...formData, vaccinated_at: Date });
+    setIsSubmitVaccine(true);
+  };
+
   return (
     <>
       <div className='qp-container'>
@@ -187,8 +268,9 @@ const PageThree = ({
                     />
                     <p className='qp-input-info'>Hybrid</p>
                   </div>
+                  <p>{formErrors.work_preference}</p>
                 </div>
-                <div></div>
+
                 <p className='qp-input-headers'>
                   {'Did you contact covid 19? :('}{' '}
                 </p>
@@ -197,6 +279,7 @@ const PageThree = ({
                     <input
                       type='radio'
                       name='had_covid'
+                      onClick={handleYesCovid}
                       onChange={() => setHadCovid(true)}
                       checked={checkedValuesCovid.yes}
                     />
@@ -205,15 +288,17 @@ const PageThree = ({
                   <div className='qp-input-radio-box'>
                     <input
                       type='radio'
-                      onClick={() =>
+                      /*  onClick={() =>
                         setFormData({ ...formData, had_covid_at: Date })
-                      }
+                      } */
+                      onClick={handleNoCovid}
                       onChange={() => setHadCovid(false)}
                       name='had_covid'
                       checked={checkedValuesCovid.no}
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
+                  <p>{formErrors.had_covid}</p>
                 </div>
                 <div className={hadCovid ? 'empty' : 'hide'}>
                   <p className='qp-input-info'>When?</p>
@@ -228,6 +313,7 @@ const PageThree = ({
                       />
                     </div>
                   </div>
+                  <p>{formErrors.had_covid_at}</p>
                 </div>
                 <div></div>
                 <p className='qp-input-headers'>Have you been vaccinated?</p>
@@ -236,6 +322,7 @@ const PageThree = ({
                     <input
                       type='radio'
                       name='vaccinated'
+                      onClick={handleYesVaccine}
                       onChange={() => setHadVaccinated(true)}
                       checked={checkedValuesVaccine.yes}
                     />
@@ -245,14 +332,16 @@ const PageThree = ({
                     <input
                       type='radio'
                       name='vaccinated'
-                      onClick={() =>
+                      /*  onClick={() =>
                         setFormData({ ...formData, vaccinated_at: Date })
-                      }
+                      } */
+                      onClick={handleNoVaccine}
                       onChange={() => setHadVaccinated(false)}
                       checked={checkedValuesVaccine.no}
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
+                  <p>{formErrors.vaccinated}</p>
                 </div>
                 <div className={hadVaccinated ? 'empty' : 'hide'}>
                   <p className='qp-input-headers'>
@@ -268,6 +357,7 @@ const PageThree = ({
                         onChange={(e) => setHadVaccineValue(e.target.value)}
                       />
                     </div>
+                    <p>{formErrors.vaccinated_at}</p>
                   </div>
                 </div>
                 <div></div>
@@ -318,10 +408,7 @@ const PageThree = ({
               ></div>
             </div>
 
-            <button
-              onClick={() => setPage((curr) => curr + 1)}
-              className='button-next'
-            >
+            <button onClick={handleNext} className='button-next'>
               <IoIosArrowDropright />
             </button>
           </div>

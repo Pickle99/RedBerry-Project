@@ -16,6 +16,8 @@ import {
   getLocalStoragePageThree_3,
   getLocalStoragePageThree_4,
   getLocalStoragePageThree_5,
+  getLocalStoragePageThree_6,
+  getLocalStoragePageThree_7,
   getLocalStoragePageFour,
 } from './Storage';
 
@@ -39,6 +41,14 @@ const QuestionsPage = () => {
   const [hadVaccineValue, setHadVaccineValue] = useState(
     getLocalStoragePageThree_5()
   );
+
+  const [isSubmitCovid, setIsSubmitCovid] = useState(
+    getLocalStoragePageThree_6()
+  );
+  const [isSubmitVaccine, setIsSubmitVaccine] = useState(
+    getLocalStoragePageThree_7
+  );
+
   const [phoneValue, setPhoneValue] = useState(getLocalStoragePageOne_2());
 
   const { page, setPage } = useContext(Context);
@@ -127,6 +137,10 @@ const QuestionsPage = () => {
           opacityValue_2={opacityValue_2}
           opacityValue_3={opacityValue_3}
           opacityValue_4={opacityValue_4}
+          isSubmitCovid={isSubmitCovid}
+          setIsSubmitCovid={setIsSubmitCovid}
+          isSubmitVaccine={isSubmitVaccine}
+          setIsSubmitVaccine={setIsSubmitVaccine}
           page={page}
           setPage={setPage}
         />

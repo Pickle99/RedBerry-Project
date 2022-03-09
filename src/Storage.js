@@ -99,6 +99,26 @@ export const getLocalStoragePageThree_5 = () => {
   }
 };
 
+export const getLocalStoragePageThree_6 = () => {
+  let isSubmitCovid = localStorage.getItem('isSubmitCovid');
+
+  if (isSubmitCovid) {
+    return JSON.parse(localStorage.getItem('isSubmitCovid'));
+  } else {
+    return false;
+  }
+};
+
+export const getLocalStoragePageThree_7 = () => {
+  let isSubmitVaccine = localStorage.getItem('isSubmitVaccine');
+
+  if (isSubmitVaccine) {
+    return JSON.parse(localStorage.getItem('isSubmitVaccine'));
+  } else {
+    return false;
+  }
+};
+
 export const getLocalStoragePageFour = () => {
   let devtalk = localStorage.getItem('devtalk');
 
