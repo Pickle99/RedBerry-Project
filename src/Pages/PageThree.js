@@ -196,7 +196,7 @@ const PageThree = ({
     if (hadCovidValue) {
       setFormData({ ...formData, had_covid_at: hadCovidValue });
     } else {
-      setFormData({ ...formData, had_covid_at: Date });
+      setFormData({ ...formData, had_covid_at: undefined });
     }
   }, [hadCovidValue]);
 
@@ -206,7 +206,7 @@ const PageThree = ({
     if (hadVaccineValue) {
       setFormData({ ...formData, vaccinated_at: hadVaccineValue });
     } else {
-      setFormData({ ...formData, vaccinated_at: Date });
+      setFormData({ ...formData, vaccinated_at: undefined });
     }
   }, [hadVaccineValue]);
 
@@ -215,8 +215,9 @@ const PageThree = ({
   };
 
   const handleNoCovid = () => {
-    setFormData({ ...formData, had_covid_at: Date });
+    setFormData({ ...formData, had_covid_at: undefined });
     setIsSubmitCovid(true);
+    setHadCovidValue('');
   };
 
   const handleYesVaccine = () => {
@@ -224,8 +225,9 @@ const PageThree = ({
   };
 
   const handleNoVaccine = () => {
-    setFormData({ ...formData, vaccinated_at: Date });
+    setFormData({ ...formData, vaccinated_at: undefined });
     setIsSubmitVaccine(true);
+    setHadVaccineValue('');
   };
 
   return (

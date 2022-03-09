@@ -26,8 +26,9 @@ const PageThree = ({
   };
 
   const handleNoTopic = () => {
-    setFormData({ ...formData, devtalk_topic: String });
+    setFormData({ ...formData, devtalk_topic: undefined });
     setIsSubmitTopic(true);
+    setDevtalkValue('');
   };
   //
   const [isSubmit, setIsSubmit] = useState(false);
@@ -42,7 +43,7 @@ const PageThree = ({
     }
 
     if (!isSubmitTopic) {
-      if (values.devtalk_topic == String) {
+      if (values.devtalk_topic == undefined) {
         errors.devtalk_topic = 'This field is required!';
       } else if (isSubmitTopic) {
         return '';
@@ -81,7 +82,7 @@ const PageThree = ({
     localStorage.setItem('devtalkValue', JSON.stringify(devtalkValue));
     if (devtalkValue) {
       return setFormData({ ...formData, devtalk_topic: devtalkValue });
-    } else return setFormData({ ...formData, devtalk_topic: String });
+    } else return setFormData({ ...formData, devtalk_topic: undefined });
   }, [devtalkValue]);
 
   useEffect(() => {

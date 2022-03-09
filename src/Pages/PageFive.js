@@ -16,7 +16,7 @@ const PageFive = ({
   setSelectedExperience,
   setDevtalkValue,
 }) => {
-  const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
+  const token = '164cc12e-b702-4944-bcf3-e6622eb033fc';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
 
   const handleBack = (e) => {
@@ -33,13 +33,13 @@ const PageFive = ({
       first_name: formData.first_name,
       last_name: formData.last_name,
       email: formData.email,
-      phone: formData.phone,
+      phone: formData.phone || undefined,
       skills: formData.skills,
       work_preference: formData.work_preference,
       had_covid: formData.had_covid,
-      had_covid_at: formData.had_covid_at,
+      had_covid_at: formData.had_covid_at || undefined,
       vaccinated: formData.vaccinated,
-      vaccinated_at: formData.vaccinated_at,
+      vaccinated_at: formData.vaccinated_at || undefined,
       will_organize_devtalk: formData.will_organize_devtalk,
       devtalk_topic: formData.devtalk_topic,
       something_special: formData.something_special,
@@ -48,15 +48,15 @@ const PageFive = ({
       first_name: '',
       last_name: '',
       email: '',
-      phone: String,
+      phone: undefined,
       skills: [],
       work_preference: '',
       had_covid: '',
-      had_covid_at: Date,
+      had_covid_at: undefined,
       vaccinated: '',
-      vaccinated_at: Date,
+      vaccinated_at: undefined,
       will_organize_devtalk: '',
-      devtalk_topic: String,
+      devtalk_topic: undefined,
       something_special: '',
     });
     setWorkPreference('');

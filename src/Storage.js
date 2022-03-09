@@ -7,15 +7,15 @@ export const getLocalStoragePageOne = () => {
       first_name: '',
       last_name: '',
       email: '',
-      phone: String,
+      phone: undefined,
       skills: [],
       work_preference: '',
       had_covid: '',
-      had_covid_at: Date,
+      had_covid_at: undefined,
       vaccinated: '',
-      vaccinated_at: Date,
+      vaccinated_at: undefined,
       will_organize_devtalk: '',
-      devtalk_topic: String,
+      devtalk_topic: undefined,
       something_special: '',
     };
   }
@@ -26,7 +26,9 @@ export const getLocalStoragePageOne_2 = () => {
 
   if (phoneValue) {
     return JSON.parse(localStorage.getItem('phoneValue'));
-  } else return String;
+  } else {
+    return '';
+  }
 };
 
 export const getLocalStoragePageTwo = () => {
@@ -135,7 +137,7 @@ export const getLocalStoragePageFour_2 = () => {
   if (devtalkValue) {
     return JSON.parse(localStorage.getItem('devtalkValue'));
   } else {
-    return String;
+    return false;
   }
 };
 
@@ -145,6 +147,6 @@ export const getLocalStoragePageFour_3 = () => {
   if (isSubmitTopic) {
     return JSON.parse(localStorage.getItem('isSubmitTopic'));
   } else {
-    return false;
+    return '';
   }
 };

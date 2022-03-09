@@ -24,7 +24,7 @@ const User = ({
   const [phoneCheck, setPhoneCheck] = useState(false);
   const [dateCheck1, setDateCheck1] = useState(false);
   const [dateCheck2, setDateCheck2] = useState(false);
-
+  const [topicCheck, setTopicCheck] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   function CheckerForWork(value) {
@@ -81,6 +81,12 @@ const User = ({
     if (phone) {
       setPhoneCheck(true);
     } else setPhoneCheck(false);
+  }, []);
+
+  useEffect(() => {
+    if (devtalktopic) {
+      setTopicCheck(true);
+    } else setTopicCheck(false);
   }, []);
 
   const labelClicker = () => {
@@ -267,19 +273,24 @@ const User = ({
                       <p className='qp-input-info'>No</p>
                     </div>
                   </div>
-                  <p className='p-headers'>
-                    What would you speak about at Devtalk?
-                  </p>
-                  <div className='devtalk-box'>
-                    <div className='qp-input-textarea'>
-                      <textarea
-                        cols='50'
-                        rows='4'
-                        value={devtalktopic}
-                        disabled
-                      ></textarea>
+                  {devtalktopic && (
+                    <div>
+                      <p className='p-headers'>
+                        What would you speak about at Devtalk?
+                      </p>
+                      <div className='devtalk-box'>
+                        <div className='qp-input-textarea'>
+                          <textarea
+                            cols='50'
+                            rows='4'
+                            value={devtalktopic}
+                            disabled
+                          ></textarea>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
+
                   <p className='p-headers'>Tell us something special</p>
                   <div className='devtalk-box'>
                     <div className='qp-input-textarea'>

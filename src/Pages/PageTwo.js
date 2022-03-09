@@ -20,28 +20,39 @@ const PageTwo = ({
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [isSubmitTwo, setIsSubmitTwo] = useState(false);
+  const [isSubmitThree, setIsSubmitThree] = useState(true);
   const [selectedSkill, setSelectedSkill] = useState('');
 
   const validate = (values) => {
     const errors = {};
 
-    if (!(selectedExperience && selectedSkill)) {
-      errors.selectedExperience = 'Experience is required';
-      errors.selectedSkill = 'Skill is required';
+    if (isSubmitThree) {
+      !selectedSkill
+        ? (errors.selectedSkill = 'Skill field is required')
+        : (errors.selectedSkill = '');
+
+      !selectedExperience
+        ? (errors.selectedExperience = 'Experience field is required')
+        : (errors.selectedExperience = '');
     }
 
     return errors;
   };
 
   useEffect(() => {
+    if (ListA) {
+      console.log('listA is true');
+    } else return console.log('list a is false');
+  }, [ListA]);
+
+  useEffect(() => {
     console.log(formErrors);
     if (isSubmit) {
-      setIsSubmitTwo(true);
     }
   }, [formErrors]);
 
   const handleNext = () => {
-    setFormErrors(validate(formData));
+    !list.length ? setFormErrors(validate()) : setIsSubmitTwo(true);
   };
 
   useEffect(() => {
@@ -70,17 +81,16 @@ const PageTwo = ({
   };
 
   const addHandleClick = (e) => {
+    e.preventDefault();
     setIsSubmit(true);
-    console.log(selectedSkill, '123123');
-    console.log(list);
+    setIsSubmitThree(false);
     const [selectedSkillFilter] = skillsList.filter(
       (skill) => skill.id == selectedSkill
     );
-    console.log(skillsList, 'skillslist');
-    console.log(selectedSkillFilter, '00select');
+
     setSelectedSkill('');
     setSelectedExperience('');
-
+    setFormErrors(validate());
     const newItem = {
       id: selectedSkill,
       title: selectedSkillFilter.title,
@@ -164,8 +174,8 @@ const PageTwo = ({
                 <p>{formErrors.selectedExperience}</p>
                 <div className='APL-button'>
                   <button
-                    onClick={addHandleClick}
                     disabled={!(selectedSkill && selectedExperience)}
+                    onClick={addHandleClick}
                   >
                     Add Programming Language
                   </button>

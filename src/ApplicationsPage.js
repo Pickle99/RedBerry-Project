@@ -10,7 +10,7 @@ const ApplicationsPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://bootcamp-2022.devtest.ge/api/applications?token=cdae124a-83b5-487b-9127-28bec7152e18'
+        'https://bootcamp-2022.devtest.ge/api/applications?token=164cc12e-b702-4944-bcf3-e6622eb033fc'
       )
       .then((res) => {
         console.log(res);

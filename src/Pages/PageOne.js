@@ -43,7 +43,7 @@ const PageOne = ({
     localStorage.setItem('phoneValue', JSON.stringify(phoneValue));
     if (phoneValue) {
       return setFormData({ ...formData, phone: phoneValue });
-    } else return setFormData({ ...formData, phone: String });
+    } else return setFormData({ ...formData, phone: undefined });
   }, [phoneValue]);
 
   const handleNext = () => {
