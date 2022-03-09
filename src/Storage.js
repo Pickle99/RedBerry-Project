@@ -137,7 +137,7 @@ export const getLocalStoragePageFour_2 = () => {
   if (devtalkValue) {
     return JSON.parse(localStorage.getItem('devtalkValue'));
   } else {
-    return false;
+    return '';
   }
 };
 
