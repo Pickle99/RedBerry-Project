@@ -40,13 +40,6 @@ const PageTwo = ({
   };
 
   useEffect(() => {
-    if (ListA) {
-      console.log('listA is true');
-    } else return console.log('list a is false');
-  }, [ListA]);
-
-  useEffect(() => {
-    console.log(formErrors);
     if (isSubmit) {
     }
   }, [formErrors]);
@@ -68,7 +61,7 @@ const PageTwo = ({
       return true;
     }
   };
-  console.log(CirclePage());
+
   useEffect(() => {
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
@@ -115,7 +108,6 @@ const PageTwo = ({
       ],
     });
     e.preventDefault();
-    console.log(formData);
   };
 
   useEffect(() => {

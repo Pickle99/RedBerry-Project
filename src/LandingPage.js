@@ -9,7 +9,9 @@ const LandingPage = () => {
     navigate('/survey');
   };
 
-  const submittedApp = () => [navigate('/submitted-applications')];
+  const submittedApp = () => {
+    navigate('/submitted-applications');
+  };
 
   return (
     <div className='container'>

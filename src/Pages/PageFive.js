@@ -16,7 +16,7 @@ const PageFive = ({
   setSelectedExperience,
   setDevtalkValue,
 }) => {
-  const token = '164cc12e-b702-4944-bcf3-e6622eb033fc';
+  const token = 'a7d40f28-b76d-4016-8c6d-cbf499c53a93';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
 
   const handleBack = (e) => {
@@ -27,7 +27,6 @@ const PageFive = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
     axios.post(url, {
       token: token,
       first_name: formData.first_name,

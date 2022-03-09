@@ -36,11 +36,14 @@ const PageOne = ({
       errors.phone =
         'Phone number format is not valid for Georgia (ex:+9955..)';
     }
+    if (values.phone.length > 13) {
+      errors.phone = 'Too much numbers for Georgian number';
+    }
+
     return errors;
   };
 
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0) {
       setIsSubmit(true);
     }

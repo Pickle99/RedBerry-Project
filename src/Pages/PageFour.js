@@ -57,7 +57,6 @@ const PageThree = ({
   };
 
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0) {
       setIsSubmit(true);
     }
