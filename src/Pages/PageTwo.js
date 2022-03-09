@@ -17,8 +17,38 @@ const PageTwo = ({
   setPage,
 }) => {
   const [skillsList, setSkillsList] = useState([]);
-
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [isSubmitTwo, setIsSubmitTwo] = useState(false);
   const [selectedSkill, setSelectedSkill] = useState('');
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!(selectedExperience && selectedSkill)) {
+      errors.selectedExperience = 'Experience is required';
+      errors.selectedSkill = 'Skill is required';
+    }
+
+    return errors;
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (isSubmit) {
+      setIsSubmitTwo(true);
+    }
+  }, [formErrors]);
+
+  const handleNext = () => {
+    setFormErrors(validate(formData));
+  };
+
+  useEffect(() => {
+    if (isSubmitTwo) {
+      return setPage((curr) => curr + 1);
+    } else return setIsSubmitTwo(false);
+  }, [isSubmitTwo]);
 
   useEffect(() => {
     axios
@@ -40,6 +70,7 @@ const PageTwo = ({
   };
 
   const addHandleClick = (e) => {
+    setIsSubmit(true);
     console.log(selectedSkill, '123123');
     console.log(list);
     const [selectedSkillFilter] = skillsList.filter(
@@ -117,7 +148,7 @@ const PageTwo = ({
                     ))}
                   </select>
                 </div>
-
+                {formErrors.selectedSkill}
                 <div className='qp-input skill-item'>
                   <input
                     onChange={
@@ -130,7 +161,7 @@ const PageTwo = ({
                     placeholder='Experience Duration in years'
                   />
                 </div>
-
+                <p>{formErrors.selectedExperience}</p>
                 <div className='APL-button'>
                   <button
                     onClick={addHandleClick}
@@ -191,10 +222,7 @@ const PageTwo = ({
               ></div>
             </div>
 
-            <button
-              onClick={() => setPage((curr) => curr + 1)}
-              className='button-next'
-            >
+            <button onClick={handleNext} className='button-next'>
               <IoIosArrowDropright />
             </button>
           </div>

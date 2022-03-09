@@ -13,8 +13,31 @@ const PageOne = ({
   opacityValue_4,
   setPage,
 }) => {
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   const geoNumberRegex = /(((\+){1}995){1})? ?-?[56789]{1}[0-9]{9}$/gm;
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.first_name) {
+      errors.first_name = 'First name is required';
+    }
+    if (!values.last_name) {
+      errors.last_name = 'Last name is required';
+    }
+    if (!values.email) {
+      errors.email = 'Email is required';
+    }
+    return errors;
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0) {
+      setIsSubmit(true);
+    }
+  }, [formErrors]);
 
   useEffect(() => {
     localStorage.setItem('phoneValue', JSON.stringify(phoneValue));
@@ -22,6 +45,16 @@ const PageOne = ({
       return setFormData({ ...formData, phone: phoneValue });
     } else return setFormData({ ...formData, phone: String });
   }, [phoneValue]);
+
+  const handleNext = () => {
+    setFormErrors(validate(formData));
+  };
+
+  useEffect(() => {
+    if (isSubmit) {
+      return setPage((curr) => curr + 1);
+    } else return setIsSubmit(false);
+  }, [isSubmit]);
 
   return (
     <>
@@ -47,7 +80,9 @@ const PageOne = ({
                     }
                   />
                 </div>
-                <div></div>
+                <div>
+                  <p>{formErrors.first_name}</p>
+                </div>
                 <div className='qp-input skill-item'>
                   <input
                     name='last_name'
@@ -62,7 +97,9 @@ const PageOne = ({
                     }
                   />
                 </div>
-                <div></div>
+                <div>
+                  <p>{formErrors.last_name}</p>
+                </div>
                 <div className='qp-input skill-item'>
                   <input
                     type='text'
@@ -73,7 +110,9 @@ const PageOne = ({
                     }
                   />
                 </div>
-
+                <div>
+                  <p>{formErrors.email}</p>
+                </div>
                 <div className='qp-input skill-item'>
                   <input
                     type='text'
@@ -129,10 +168,7 @@ const PageOne = ({
               ></div>
             </div>
 
-            <button
-              onClick={() => setPage((curr) => curr + 1)}
-              className='button-next'
-            >
+            <button onClick={handleNext} className='button-next'>
               <IoIosArrowDropright />
             </button>
           </div>
