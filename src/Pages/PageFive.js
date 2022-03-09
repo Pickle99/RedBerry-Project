@@ -14,6 +14,7 @@ const PageFive = ({
   setHadVaccineValue,
   setPhoneValue,
   setSelectedExperience,
+  setDevtalkValue,
 }) => {
   const token = 'cdae124a-83b5-487b-9127-28bec7152e18';
   const url = 'https://bootcamp-2022.devtest.ge/api/application';
@@ -55,7 +56,7 @@ const PageFive = ({
       vaccinated: '',
       vaccinated_at: Date,
       will_organize_devtalk: '',
-      devtalk_topic: '',
+      devtalk_topic: String,
       something_special: '',
     });
     setWorkPreference('');
@@ -67,6 +68,7 @@ const PageFive = ({
     setHadVaccineValue('');
     setPhoneValue('');
     setSelectedExperience('');
+    setDevtalkValue('');
     setPage(5);
   };
 

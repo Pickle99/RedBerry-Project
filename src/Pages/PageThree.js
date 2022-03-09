@@ -272,7 +272,7 @@ const PageThree = ({
                 </div>
 
                 <p className='qp-input-headers'>
-                  {'Did you contact covid 19? :('}{' '}
+                  {'Did you contact covid 19? :('}
                 </p>
                 <div className='qp-input-radio'>
                   <div className='qp-input-radio-box'>

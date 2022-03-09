@@ -10,12 +10,79 @@ const PageThree = ({
   opacityValue_2,
   opacityValue_3,
   opacityValue_4,
+  devtalkValue,
+  setDevtalkValue,
+  isSubmitTopic,
+  setIsSubmitTopic,
   setPage,
 }) => {
   const [checkedValuesDevtalk, setCheckedValuesDevtalk] = useState({
     yes: false,
     no: false,
   });
+
+  const handleYesTopic = () => {
+    setIsSubmitTopic(false);
+  };
+
+  const handleNoTopic = () => {
+    setFormData({ ...formData, devtalk_topic: String });
+    setIsSubmitTopic(true);
+  };
+  //
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const [formErrors, setFormErrors] = useState([]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (values.will_organize_devtalk === '') {
+      errors.will_organize_devtalk = 'Please choose at least one answer';
+    }
+
+    if (!isSubmitTopic) {
+      if (values.devtalk_topic == String) {
+        errors.devtalk_topic = 'This field is required!';
+      } else if (isSubmitTopic) {
+        return '';
+      }
+    }
+    if (values.something_special === '') {
+      errors.something_special = 'Text something!';
+    }
+
+    return errors;
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0) {
+      setIsSubmit(true);
+    }
+  }, [formErrors]);
+
+  const handleNext = () => {
+    setFormErrors(validate(formData));
+  };
+
+  useEffect(() => {
+    if (isSubmit) {
+      return setPage((curr) => curr + 1);
+    } else return setIsSubmit(false);
+  }, [isSubmit]);
+
+  useEffect(() => {
+    localStorage.setItem('isSubmitTopic', JSON.stringify(isSubmitTopic));
+  }, [isSubmitTopic]);
+  /// up
+
+  useEffect(() => {
+    localStorage.setItem('devtalkValue', JSON.stringify(devtalkValue));
+    if (devtalkValue) {
+      return setFormData({ ...formData, devtalk_topic: devtalkValue });
+    } else return setFormData({ ...formData, devtalk_topic: String });
+  }, [devtalkValue]);
 
   useEffect(() => {
     localStorage.setItem('devtalk', JSON.stringify(devtalk));
@@ -60,6 +127,7 @@ const PageThree = ({
                     <input
                       type='radio'
                       name='will_organize_devtalk'
+                      onClick={handleYesTopic}
                       onChange={() => setDevtalk(true)}
                       checked={checkedValuesDevtalk.yes}
                     />
@@ -68,48 +136,53 @@ const PageThree = ({
                   <div className='qp-input-radio-box'>
                     <input
                       type='radio'
+                      onClick={handleNoTopic}
                       onChange={() => setDevtalk(false)}
                       name='will_organize_devtalk'
                       checked={checkedValuesDevtalk.no}
                     />
                     <p className='qp-input-info'>No</p>
                   </div>
+                  <p>{formErrors.will_organize_devtalk}</p>
                 </div>
-                <p className='qp-input-headers'>
-                  What would you speak about at Devtalk?
-                </p>
-                <div className='qp-input-radio'>
-                  <div className='qp-input-textarea'>
-                    <textarea
-                      cols='70'
-                      rows='4'
-                      placeholder='I would...'
-                      value={formData.devtalk_topic}
-                      onChange={(event) =>
-                        setFormData({
-                          ...formData,
-                          devtalk_topic: event.target.value,
-                        })
-                      }
-                    ></textarea>
-                  </div>
-                  <p className='qp-input-headers'>Tell us something special</p>
+
+                <div className={devtalk ? 'empty' : 'hide'}>
+                  <p className='qp-input-headers'>
+                    What would you speak about at Devtalk?
+                  </p>
                   <div className='qp-input-radio'>
                     <div className='qp-input-textarea'>
                       <textarea
                         cols='70'
-                        rows='1'
-                        placeholder='I...'
-                        value={formData.something_special}
+                        rows='4'
+                        placeholder='I would...'
+                        value={devtalkValue}
                         onChange={(event) =>
-                          setFormData({
-                            ...formData,
-                            something_special: event.target.value,
-                          })
+                          setDevtalkValue(event.target.value)
                         }
                       ></textarea>
                     </div>
+                    <p>{formErrors.devtalk_topic}</p>
                   </div>
+                </div>
+
+                <p className='qp-input-headers'>Tell us something special</p>
+                <div className='qp-input-radio'>
+                  <div className='qp-input-textarea'>
+                    <textarea
+                      cols='70'
+                      rows='1'
+                      placeholder='I...'
+                      value={formData.something_special}
+                      onChange={(event) =>
+                        setFormData({
+                          ...formData,
+                          something_special: event.target.value,
+                        })
+                      }
+                    ></textarea>
+                  </div>
+                  <p>{formErrors.something_special}</p>
                 </div>
               </form>
             </div>
@@ -158,10 +231,7 @@ const PageThree = ({
               ></div>
             </div>
 
-            <button
-              onClick={() => setPage((curr) => curr + 1)}
-              className='button-next'
-            >
+            <button onClick={handleNext} className='button-next'>
               <IoIosArrowDropright />
             </button>
           </div>

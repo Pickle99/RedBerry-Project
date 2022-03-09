@@ -15,7 +15,7 @@ export const getLocalStoragePageOne = () => {
       vaccinated: '',
       vaccinated_at: Date,
       will_organize_devtalk: '',
-      devtalk_topic: '',
+      devtalk_topic: String,
       something_special: '',
     };
   }
@@ -126,5 +126,25 @@ export const getLocalStoragePageFour = () => {
     return JSON.parse(localStorage.getItem('devtalk'));
   } else {
     return '';
+  }
+};
+
+export const getLocalStoragePageFour_2 = () => {
+  let devtalkValue = localStorage.getItem('devtalkValue');
+
+  if (devtalkValue) {
+    return JSON.parse(localStorage.getItem('devtalkValue'));
+  } else {
+    return String;
+  }
+};
+
+export const getLocalStoragePageFour_3 = () => {
+  let isSubmitTopic = localStorage.getItem('isSubmitTopic');
+
+  if (isSubmitTopic) {
+    return JSON.parse(localStorage.getItem('isSubmitTopic'));
+  } else {
+    return false;
   }
 };

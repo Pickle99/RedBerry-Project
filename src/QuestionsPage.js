@@ -19,6 +19,8 @@ import {
   getLocalStoragePageThree_6,
   getLocalStoragePageThree_7,
   getLocalStoragePageFour,
+  getLocalStoragePageFour_2,
+  getLocalStoragePageFour_3,
 } from './Storage';
 
 const QuestionsPage = () => {
@@ -33,6 +35,7 @@ const QuestionsPage = () => {
   const [hadVaccinated, setHadVaccinated] = useState(
     getLocalStoragePageThree_2()
   );
+
   const [devtalk, setDevtalk] = useState(getLocalStoragePageFour());
   const [list, setList] = useState(getLocalStoragePageTwo());
   const [hadCovidValue, setHadCovidValue] = useState(
@@ -48,8 +51,12 @@ const QuestionsPage = () => {
   const [isSubmitVaccine, setIsSubmitVaccine] = useState(
     getLocalStoragePageThree_7
   );
+  const [isSubmitTopic, setIsSubmitTopic] = useState(
+    getLocalStoragePageFour_3()
+  );
 
   const [phoneValue, setPhoneValue] = useState(getLocalStoragePageOne_2());
+  const [devtalkValue, setDevtalkValue] = useState(getLocalStoragePageFour_2());
 
   const { page, setPage } = useContext(Context);
   const [opacityValue_1, setOpacityValue_1] = useState(0.1);
@@ -156,6 +163,10 @@ const QuestionsPage = () => {
           opacityValue_2={opacityValue_2}
           opacityValue_3={opacityValue_3}
           opacityValue_4={opacityValue_4}
+          devtalkValue={devtalkValue}
+          setDevtalkValue={setDevtalkValue}
+          isSubmitTopic={isSubmitTopic}
+          setIsSubmitTopic={setIsSubmitTopic}
           page={page}
           setPage={setPage}
         />
@@ -176,6 +187,7 @@ const QuestionsPage = () => {
           setPhoneValue={setPhoneValue}
           page={page}
           setSelectedExperience={setSelectedExperience}
+          setDevtalkValue={setDevtalkValue}
         />
       );
     } else if (page === 5) {
