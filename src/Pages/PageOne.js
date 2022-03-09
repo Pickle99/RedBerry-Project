@@ -15,8 +15,9 @@ const PageOne = ({
 }) => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  const geoNumberRegex = /(((\+){1}995){1})? ?-?[56789]{1}[0-9]{9}$/gm;
+  const geoNumberRegex = /[+]9955/g;
 
   const validate = (values) => {
     const errors = {};
@@ -28,6 +29,12 @@ const PageOne = ({
     }
     if (!values.email) {
       errors.email = 'Email is required';
+    } else if (!emailRegex.test(values.email)) {
+      errors.email = 'This is not a valid email format';
+    }
+    if (!geoNumberRegex.test(values.phone) && values.phone.length > 0) {
+      errors.phone =
+        'Phone number format is not valid for Georgia (ex:+9955..)';
     }
     return errors;
   };
@@ -43,11 +50,23 @@ const PageOne = ({
     localStorage.setItem('phoneValue', JSON.stringify(phoneValue));
     if (phoneValue) {
       return setFormData({ ...formData, phone: phoneValue });
-    } else return setFormData({ ...formData, phone: undefined });
+    } else return setFormData({ ...formData, phone: '' });
   }, [phoneValue]);
 
   const handleNext = () => {
     setFormErrors(validate(formData));
+  };
+
+  const CirclePage = () => {
+    if (
+      !(
+        formData.first_name &&
+        formData.last_name &&
+        emailRegex.test(formData.email)
+      )
+    ) {
+      return true;
+    } else return false;
   };
 
   useEffect(() => {
@@ -121,51 +140,53 @@ const PageOne = ({
                     onChange={(event) => setPhoneValue(event.target.value)}
                   />
                 </div>
+                <p>{formErrors.phone}</p>
               </form>
             </div>
           </div>
           <div className='qp-button-box'>
-            <button
-              onClick={() => setPage((curr) => curr - 1)}
-              className='button-prev'
-            >
+            <button className='button-prev'>
               <IoIosArrowDropleft />
             </button>
 
             <div className='circle-container'>
-              <div
-                onClick={() => setPage(0)}
+              <button
                 style={{ opacity: opacityValue_1 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(1)}
                 style={{ opacity: opacityValue_2 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(2)}
                 style={{ opacity: opacityValue_3 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(3)}
                 style={{ opacity: opacityValue_4 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(4)}
                 style={{ opacity: 0.1 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
 
             <button onClick={handleNext} className='button-next'>

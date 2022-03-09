@@ -61,6 +61,14 @@ const PageTwo = ({
     } else return setIsSubmitTwo(false);
   }, [isSubmitTwo]);
 
+  const CirclePage = () => {
+    if (list.length) {
+      return false;
+    } else if (!list.length) {
+      return true;
+    }
+  };
+  console.log(CirclePage());
   useEffect(() => {
     axios
       .get('https://bootcamp-2022.devtest.ge/api/skills')
@@ -197,39 +205,44 @@ const PageTwo = ({
             </button>
 
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(0)}
                 style={{ opacity: opacityValue_1 }}
+                disabled={CirclePage()}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(1)}
                 style={{ opacity: opacityValue_2 }}
+                disabled={CirclePage()}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(2)}
                 style={{ opacity: opacityValue_3 }}
+                disabled={CirclePage()}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(3)}
                 style={{ opacity: opacityValue_4 }}
+                disabled={CirclePage()}
                 className='circle'
-              ></div>
+              ></button>
             </div>
             <div className='circle-container'>
-              <div
+              <button
                 onClick={() => setPage(4)}
                 style={{ opacity: 0.1 }}
                 className='circle'
-              ></div>
+                disabled={CirclePage()}
+              ></button>
             </div>
 
             <button onClick={handleNext} className='button-next'>
