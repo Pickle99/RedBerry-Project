@@ -56,7 +56,6 @@ const PageOne = ({
   }, [formErrors]);
 
   useEffect(() => {
-    localStorage.setItem('phoneValue', JSON.stringify(phoneValue));
     if (phoneValue) {
       return setFormData({ ...formData, phone: phoneValue });
     } else return setFormData({ ...formData, phone: '' });

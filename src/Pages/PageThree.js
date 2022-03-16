@@ -90,15 +90,6 @@ const PageThree = ({
   }, [isSubmit]);
 
   useEffect(() => {
-    localStorage.setItem('isSubmitCovid', JSON.stringify(isSubmitCovid));
-  }, [isSubmitCovid]);
-
-  useEffect(() => {
-    localStorage.setItem('isSubmitVaccine', JSON.stringify(isSubmitVaccine));
-  }, [isSubmitVaccine]);
-
-  useEffect(() => {
-    localStorage.setItem('workPreference', JSON.stringify(workPreference));
     setFormData({ ...formData, work_preference: workPreference });
 
     // For work input
@@ -138,7 +129,6 @@ const PageThree = ({
 
   // For covid input
   useEffect(() => {
-    localStorage.setItem('hadCovid', JSON.stringify(hadCovid));
     setFormData({ ...formData, had_covid: hadCovid });
     if (hadCovid === true) {
       setCheckedValuesCovid({
@@ -165,7 +155,6 @@ const PageThree = ({
 
   // For vaccine input
   useEffect(() => {
-    localStorage.setItem('hadVaccinated', JSON.stringify(hadVaccinated));
     setFormData({ ...formData, vaccinated: hadVaccinated });
     if (hadVaccinated === true) {
       setCheckedValuesVaccine({
@@ -191,7 +180,6 @@ const PageThree = ({
   // end of vaccine input
 
   useEffect(() => {
-    localStorage.setItem('hadCovidValue', JSON.stringify(hadCovidValue));
     if (hadCovidValue) {
       setFormData({ ...formData, had_covid_at: hadCovidValue });
     } else {
@@ -200,8 +188,6 @@ const PageThree = ({
   }, [hadCovidValue]);
 
   useEffect(() => {
-    localStorage.setItem('hadVaccineValue', JSON.stringify(hadVaccineValue));
-
     if (hadVaccineValue) {
       setFormData({ ...formData, vaccinated_at: hadVaccineValue });
     } else {

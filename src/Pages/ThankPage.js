@@ -6,7 +6,7 @@ const ThankPage = ({ setPage }) => {
     const timer = () =>
       setTimeout(() => {
         setPage(0);
-        // navigate('/'); uncomplete
+        navigate('/');
       }, 3000);
     const timerId = timer();
     return () => {

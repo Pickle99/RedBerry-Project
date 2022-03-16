@@ -72,20 +72,15 @@ const PageThree = ({
     } else return setIsSubmit(false);
   }, [isSubmit]);
 
-  useEffect(() => {
-    localStorage.setItem('isSubmitTopic', JSON.stringify(isSubmitTopic));
-  }, [isSubmitTopic]);
   /// up
 
   useEffect(() => {
-    localStorage.setItem('devtalkValue', JSON.stringify(devtalkValue));
     if (devtalkValue) {
       return setFormData({ ...formData, devtalk_topic: devtalkValue });
     } else return setFormData({ ...formData, devtalk_topic: undefined });
   }, [devtalkValue]);
 
   useEffect(() => {
-    localStorage.setItem('devtalk', JSON.stringify(devtalk));
     setFormData({ ...formData, will_organize_devtalk: devtalk });
 
     if (devtalk === true) {

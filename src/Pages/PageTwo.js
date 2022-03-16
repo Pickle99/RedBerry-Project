@@ -23,7 +23,7 @@ const PageTwo = ({
   const [isSubmitThree, setIsSubmitThree] = useState(true);
   const [selectedSkill, setSelectedSkill] = useState('');
 
-  const validate = (values) => {
+  const validate = () => {
     const errors = {};
 
     if (isSubmitThree) {
@@ -110,16 +110,7 @@ const PageTwo = ({
   };
 
   useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
-  }, [list]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      'selectedExperience',
-      JSON.stringify(selectedExperience)
-    );
-
-    if (selectedExperience === 0) {
+    if (selectedExperience <= 0) {
       return setSelectedExperience('');
     }
   }, [selectedExperience]);

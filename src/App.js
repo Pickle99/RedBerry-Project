@@ -5,16 +5,7 @@ import QuestionsPage from './QuestionsPage';
 import ApplicationsPage from './ApplicationsPage';
 import { Routes, Route } from 'react-router-dom';
 import { Context } from './context/Context';
-
-const getLocalStorageForPage = () => {
-  let page = localStorage.getItem('page');
-
-  if (page) {
-    return JSON.parse(localStorage.getItem('page'));
-  } else {
-    return 0;
-  }
-};
+import { getLocalStorageForPage } from './Storage';
 
 function App() {
   const [page, setPage] = useState(getLocalStorageForPage());
